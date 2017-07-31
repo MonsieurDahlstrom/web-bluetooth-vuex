@@ -4,26 +4,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
 var _device = require('./actions/device');
 
-var DeviceActions = _interopRequireWildcard(_device);
+var _device2 = _interopRequireDefault(_device);
 
 var _service = require('./actions/service');
 
-var ServiceActions = _interopRequireWildcard(_service);
+var _service2 = _interopRequireDefault(_service);
 
-var _device2 = require('./mutations/device');
+var _characteristic = require('./actions/characteristic');
 
-var _device3 = _interopRequireDefault(_device2);
+var _characteristic2 = _interopRequireDefault(_characteristic);
+
+var _device3 = require('./mutations/device');
+
+var _device4 = _interopRequireDefault(_device3);
+
+var _service3 = require('./mutations/service');
+
+var _service4 = _interopRequireDefault(_service3);
+
+var _characteristic3 = require('./mutations/characteristic');
+
+var _characteristic4 = _interopRequireDefault(_characteristic3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var ServiceMutations = {};
-//var CharacteristicMutations = {}
-
-//
 var state = {
   devices: [],
   services: [],
@@ -34,17 +44,25 @@ var getters = {
   webBluetoothDevices: function webBluetoothDevices(state) {
     return state.devices;
   },
-  webBluetoothServices: function webBluetoothServices(state) {
-    return state.services;
+  webBluetoothServicesForDevice: function webBluetoothServicesForDevice(state) {
+    return function (device) {
+      return state.services.filter(function (service) {
+        return service.device === device;
+      });
+    };
   },
-  webBluetoothCharacteristics: function webBluetoothCharacteristics(state) {
-    return state.characteristics;
+  webBluetoothCharacteristicsForService: function webBluetoothCharacteristicsForService(state) {
+    return function (service) {
+      return state.characteristics.filter(function (characteristic) {
+        return characteristic.service === service;
+      });
+    };
   }
 };
 
-var actions = Object.assign({}, DeviceActions.actions, ServiceActions.actions);
+var actions = (0, _assign2.default)({}, _device2.default, _service2.default, _characteristic2.default);
 
-var mutations = Object.assign({}, _device3.default, ServiceMutations, CharacteristicMutations);
+var mutations = (0, _assign2.default)({}, _device4.default, _service4.default, _characteristic4.default);
 
 exports.default = {
   state: state,
@@ -52,4 +70,3 @@ exports.default = {
   actions: actions,
   mutations: mutations
 };
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC5qcyJdLCJuYW1lcyI6WyJEZXZpY2VBY3Rpb25zIiwiU2VydmljZUFjdGlvbnMiLCJTZXJ2aWNlTXV0YXRpb25zIiwic3RhdGUiLCJkZXZpY2VzIiwic2VydmljZXMiLCJjaGFyYWN0ZXJpc3RpY3MiLCJnZXR0ZXJzIiwid2ViQmx1ZXRvb3RoRGV2aWNlcyIsIndlYkJsdWV0b290aFNlcnZpY2VzIiwid2ViQmx1ZXRvb3RoQ2hhcmFjdGVyaXN0aWNzIiwiYWN0aW9ucyIsIk9iamVjdCIsImFzc2lnbiIsIm11dGF0aW9ucyIsIkNoYXJhY3RlcmlzdGljTXV0YXRpb25zIl0sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQTs7SUFBWUEsYTs7QUFDWjs7SUFBWUMsYzs7QUFFWjs7Ozs7Ozs7QUFDQSxJQUFJQyxtQkFBbUIsRUFBdkI7QUFDQTs7QUFIQTtBQUtBLElBQU1DLFFBQVE7QUFDWkMsV0FBUyxFQURHO0FBRVpDLFlBQVUsRUFGRTtBQUdaQyxtQkFBaUI7QUFITCxDQUFkOztBQU1BLElBQU1DLFVBQVU7QUFDZEMsdUJBQXFCO0FBQUEsV0FBU0wsTUFBTUMsT0FBZjtBQUFBLEdBRFA7QUFFZEssd0JBQXNCO0FBQUEsV0FBU04sTUFBTUUsUUFBZjtBQUFBLEdBRlI7QUFHZEssK0JBQTZCO0FBQUEsV0FBU1AsTUFBTUcsZUFBZjtBQUFBO0FBSGYsQ0FBaEI7O0FBTUEsSUFBTUssVUFBVUMsT0FBT0MsTUFBUCxDQUFjLEVBQWQsRUFBa0JiLGNBQWNXLE9BQWhDLEVBQXlDVixlQUFlVSxPQUF4RCxDQUFoQjs7QUFFQSxJQUFNRyxZQUFZRixPQUFPQyxNQUFQLENBQWMsRUFBZCxvQkFBcUNYLGdCQUFyQyxFQUF1RGEsdUJBQXZELENBQWxCOztrQkFFZTtBQUNiWixjQURhO0FBRWJJLGtCQUZhO0FBR2JJLGtCQUhhO0FBSWJHO0FBSmEsQyIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAqIGFzIERldmljZUFjdGlvbnMgZnJvbSAnLi9hY3Rpb25zL2RldmljZSdcclxuaW1wb3J0ICogYXMgU2VydmljZUFjdGlvbnMgZnJvbSAnLi9hY3Rpb25zL3NlcnZpY2UnXHJcbi8vXHJcbmltcG9ydCBEZXZpY2VNdXRhdGF0aW9ucyBmcm9tICcuL211dGF0aW9ucy9kZXZpY2UnXHJcbnZhciBTZXJ2aWNlTXV0YXRpb25zID0ge31cclxuLy92YXIgQ2hhcmFjdGVyaXN0aWNNdXRhdGlvbnMgPSB7fVxyXG5cclxuY29uc3Qgc3RhdGUgPSB7XHJcbiAgZGV2aWNlczogW10sXHJcbiAgc2VydmljZXM6IFtdLFxyXG4gIGNoYXJhY3RlcmlzdGljczogW11cclxufVxyXG5cclxuY29uc3QgZ2V0dGVycyA9IHtcclxuICB3ZWJCbHVldG9vdGhEZXZpY2VzOiBzdGF0ZSA9PiBzdGF0ZS5kZXZpY2VzLFxyXG4gIHdlYkJsdWV0b290aFNlcnZpY2VzOiBzdGF0ZSA9PiBzdGF0ZS5zZXJ2aWNlcyxcclxuICB3ZWJCbHVldG9vdGhDaGFyYWN0ZXJpc3RpY3M6IHN0YXRlID0+IHN0YXRlLmNoYXJhY3RlcmlzdGljc1xyXG59XHJcblxyXG5jb25zdCBhY3Rpb25zID0gT2JqZWN0LmFzc2lnbih7fSwgRGV2aWNlQWN0aW9ucy5hY3Rpb25zLCBTZXJ2aWNlQWN0aW9ucy5hY3Rpb25zKVxyXG5cclxuY29uc3QgbXV0YXRpb25zID0gT2JqZWN0LmFzc2lnbih7fSwgRGV2aWNlTXV0YXRhdGlvbnMsIFNlcnZpY2VNdXRhdGlvbnMsIENoYXJhY3RlcmlzdGljTXV0YXRpb25zKVxyXG5cclxuZXhwb3J0IGRlZmF1bHQge1xyXG4gIHN0YXRlLFxyXG4gIGdldHRlcnMsXHJcbiAgYWN0aW9ucyxcclxuICBtdXRhdGlvbnNcclxufVxyXG4iXX0=

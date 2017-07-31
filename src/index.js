@@ -1,9 +1,10 @@
-import * as DeviceActions from './actions/device'
-import * as ServiceActions from './actions/service'
+import DeviceActions from './actions/device'
+import ServiceActions from './actions/service'
+import CharacteristicActions from './actions/characteristic'
 //
 import DeviceMutatations from './mutations/device'
-var ServiceMutations = {}
-var CharacteristicMutations = {}
+import ServiceMutations from './mutations/service'
+import CharacteristicMutations from './mutations/characteristic'
 
 const state = {
   devices: [],
@@ -13,11 +14,11 @@ const state = {
 
 const getters = {
   webBluetoothDevices: state => state.devices,
-  webBluetoothServices: state => state.services,
-  webBluetoothCharacteristics: state => state.characteristics
+  webBluetoothServicesForDevice: (state) => (device) => state.services.filter((service) => service.device === device),
+  webBluetoothCharacteristicsForService: (state) => (service) => state.characteristics.filter((characteristic) => characteristic.service === service)
 }
 
-const actions = Object.assign({}, DeviceActions, ServiceActions)
+const actions = Object.assign({}, DeviceActions, ServiceActions, CharacteristicActions)
 
 const mutations = Object.assign({}, DeviceMutatations, ServiceMutations, CharacteristicMutations)
 

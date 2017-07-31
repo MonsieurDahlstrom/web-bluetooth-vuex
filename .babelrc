@@ -1,0 +1,5 @@
+{
+  "presets": [ ["env", { "targets": { "uglify": false } }] ],
+  "plugins": ["transform-regenerator","transform-runtime"],
+  "comments": false
+}
