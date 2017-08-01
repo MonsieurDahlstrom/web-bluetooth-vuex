@@ -42,3 +42,4 @@ var DeviceMutatations = (_DeviceMutatations = {}, (0, _defineProperty3.default)(
 }), _DeviceMutatations);
 
 exports.default = DeviceMutatations;
+//# sourceMappingURL=device.js.map

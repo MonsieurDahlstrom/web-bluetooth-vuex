@@ -139,3 +139,4 @@ var DeviceActions = {
 };
 
 exports.default = DeviceActions;
+//# sourceMappingURL=device.js.map

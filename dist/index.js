@@ -70,3 +70,4 @@ exports.default = {
   actions: actions,
   mutations: mutations
 };
+//# sourceMappingURL=index.js.map

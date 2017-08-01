@@ -67,3 +67,4 @@ var ServiceMutatations = (_ServiceMutatations = {}, (0, _defineProperty3.default
   }
 }), _ServiceMutatations);
 exports.default = ServiceMutatations;
+//# sourceMappingURL=service.js.map
