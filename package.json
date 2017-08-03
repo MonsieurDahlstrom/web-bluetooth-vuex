@@ -1,5 +1,5 @@
 {
-  "name": "@monsieurdahlstrom/web-bluetooth-vuex-store",
+  "name": "@monsieurdahlstrom/web-bluetooth-vuex-module",
   "version": "0.1.3",
   "description": "vuex store module for web bluetooth device interactions and discovery.",
   "main": "dist/index.js",

@@ -27,7 +27,7 @@ var DeviceMutatations = (_DeviceMutatations = {}, (0, _defineProperty3.default)(
   if (deviceIndex < 0) {
     state.devices.push(payload.device);
   } else {
-    state.splice(deviceIndex, 1, payload.device);
+    state.devices.splice(deviceIndex, 1, payload.device);
   }
 }), (0, _defineProperty3.default)(_DeviceMutatations, MutationTypes.BLE_DEVICE_REMOVED, function (state, payload) {
   var deviceIndex = state.devices.indexOf(payload.device);

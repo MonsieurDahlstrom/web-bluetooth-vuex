@@ -7,7 +7,7 @@ const DeviceMutatations = {
     if (deviceIndex < 0) {
       state.devices.push(payload.device)
     } else {
-      state.splice(deviceIndex,1,payload.device)
+      state.devices.splice(deviceIndex,1,payload.device)
     }
   },
   [MutationTypes.BLE_DEVICE_REMOVED] (state, payload) {
