@@ -4,18 +4,20 @@
   "description": "vuex store module for web bluetooth device interactions and discovery.",
   "main": "dist/index.js",
   "devDependencies": {
-    "babel-core": "^6.24.0",
+    "babel-core": "^6.25.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
-    "babel-watch": "^2.0.6",
+    "babel-watch": "^2.0.7",
+    "chai": "^4.1.1",
     "factory-girl": "^4.3.0",
-    "jasmine": "^2.7.0"
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.0"
   },
   "scripts": {
     "build": "babel src --out-dir dist --source-maps true",
-    "test": "babel-node spec/run.js",
-    "test-watch": "babel-watch spec/run.js --watch"
+    "unit-test": "mocha test/unit/specs",
+    "test-watch": "nodemon --exec \"mocha test/unit/specs || exit 1\""
   },
   "repository": {
     "type": "git",
@@ -37,15 +39,9 @@
   },
   "homepage": "https://github.com/MonsieurDahlstrom/web-bluetooth-dfu#readme",
   "dependencies": {
-    "async": "^2.3.0",
-    "babel-runtime": "^6.23.0",
+    "async": "^2.5.0",
+    "babel-runtime": "^6.25.0",
     "vue": "^2.4.2",
     "vuex": "^2.3.1"
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ],
-    "sourceMaps": "inline"
   }
 }
