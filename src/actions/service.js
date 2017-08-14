@@ -2,7 +2,6 @@ import * as MutationTypes from '../mutation-types'
 
 const ServiceActions = {
   async webBluetoothDiscoverServices ({ dispatch, commit }, query) {
-    console.log('webBluetoothDiscoverServices')
     let discoveredServices = []
     if (query.services === undefined) {
       var services = await query.device.gatt.getPrimaryServices()

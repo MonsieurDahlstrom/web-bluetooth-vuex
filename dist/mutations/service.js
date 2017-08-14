@@ -27,7 +27,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ServiceMutatations = (_ServiceMutatations = {}, (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICES_DISCOVERED, function (state, payload) {
-  console.log('BLE_SERVICES_DISCOVERED');
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -58,7 +57,6 @@ var ServiceMutatations = (_ServiceMutatations = {}, (0, _defineProperty3.default
     }
   }
 }), (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICE_CHANGED, function (state, payload) {
-  console.log('BLE_SERVICE_CHANGED');
   var serviceIndex = state.services.indexOf(payload.service);
   if (serviceIndex < 0) {
     state.services.push(payload.service);

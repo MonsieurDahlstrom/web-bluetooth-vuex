@@ -27,7 +27,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CharacteristicMutatations = (_CharacteristicMutata = {}, (0, _defineProperty3.default)(_CharacteristicMutata, MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, function (state, payload) {
-  console.log('BLE_CHARACTERISTICS_DISCOVERED');
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -58,7 +57,6 @@ var CharacteristicMutatations = (_CharacteristicMutata = {}, (0, _defineProperty
     }
   }
 }), (0, _defineProperty3.default)(_CharacteristicMutata, MutationTypes.BLE_CHARACTERISTIC_CHANGED, function (state, payload) {
-  console.log('BLE_CHARACTERISTIC_CHANGED');
   var characteristicIndex = state.characteristics.indexOf(payload.characteristic);
   if (characteristicIndex < 0) {
     state.characteristics.push(payload.characteristic);

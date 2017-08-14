@@ -2,7 +2,6 @@ import * as MutationTypes from '../mutation-types'
 
 const CharacteristicActions = {
   async webBluetoothDiscoverCharacteristics({ dispatch, commit }, query) {
-    console.log('webBluetoothDiscoverCharacteristics')
     let discoveredCharacteristics = []
     if (query.characteristics === undefined) {
       var characteristics = await query.service.getCharacteristics()
@@ -20,7 +19,6 @@ const CharacteristicActions = {
     commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, {characteristics: discoveredCharacteristics})
   },
   async webBluetoothConfigureCharacteristic({ dispatch, commit }, query) {
-    console.log('webBluetoothConfigureCharacteristic')
     let characteristic = query.characteristic
     if(characteristic.properties.read || characteristic.properties.notify || characteristic.properties.indicate) {
       characteristic.addEventListener('characteristicvaluechanged', event => {

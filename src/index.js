@@ -14,6 +14,7 @@ const state = {
 
 const getters = {
   webBluetoothDevices: state => state.devices,
+  webBluetoothServicesForDevice: (state) => (device, service) => device.getPrimaryService(service),
   webBluetoothServicesForDevice: (state) => (device) => state.services.filter((service) => service.device === device),
   webBluetoothCharacteristicsForService: (state) => (service) => state.characteristics.filter((characteristic) => characteristic.service === service)
 }

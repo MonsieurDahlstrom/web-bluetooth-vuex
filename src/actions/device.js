@@ -2,11 +2,19 @@ import * as mutationTypes from '../mutation-types'
 
 const DeviceActions = {
 
+  /*
+  TODO: Change the implemntation to cover all the filter options:
+  {services: ['heart_rate']},
+  {services: [0x1802, 0x1803]},
+  {services: ['c48e6067-5295-48d3-8d5c-0395f61792b1']},
+  {name: 'ExampleName'},
+  {namePrefix: 'Prefix'}
+  */
   async webBluetoothDiscoverDevice ({ dispatch, commit }, query) {
     var requestParameters = { }
     // Was a device name set for the character
     if (query.name !== undefined) {
-      requestParameters['filters'] = query.name
+      requestParameters['filters'] = [{name: query.name}]
     } else {
       requestParameters['acceptAllDevices'] = true
     }

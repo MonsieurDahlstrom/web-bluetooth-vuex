@@ -36,23 +36,22 @@ var CharacteristicActions = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log('webBluetoothDiscoverCharacteristics');
               discoveredCharacteristics = [];
 
               if (!(query.characteristics === undefined)) {
-                _context.next = 27;
+                _context.next = 26;
                 break;
               }
 
-              _context.next = 5;
+              _context.next = 4;
               return query.service.getCharacteristics();
 
-            case 5:
+            case 4:
               characteristics = _context.sent;
               _iteratorNormalCompletion = true;
               _didIteratorError = false;
               _iteratorError = undefined;
-              _context.prev = 9;
+              _context.prev = 8;
 
               for (_iterator = (0, _getIterator3.default)(characteristics); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                 characteristic = _step.value;
@@ -60,114 +59,114 @@ var CharacteristicActions = {
                 dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
                 discoveredCharacteristics.push(characteristic);
               }
-              _context.next = 17;
+              _context.next = 16;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context['catch'](9);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context['catch'](8);
               _didIteratorError = true;
               _iteratorError = _context.t0;
 
-            case 17:
+            case 16:
+              _context.prev = 16;
               _context.prev = 17;
-              _context.prev = 18;
 
               if (!_iteratorNormalCompletion && _iterator.return) {
                 _iterator.return();
               }
 
-            case 20:
-              _context.prev = 20;
+            case 19:
+              _context.prev = 19;
 
               if (!_didIteratorError) {
-                _context.next = 23;
+                _context.next = 22;
                 break;
               }
 
               throw _iteratorError;
 
+            case 22:
+              return _context.finish(19);
+
             case 23:
-              return _context.finish(20);
+              return _context.finish(16);
 
             case 24:
-              return _context.finish(17);
-
-            case 25:
-              _context.next = 56;
+              _context.next = 55;
               break;
 
-            case 27:
+            case 26:
               _iteratorNormalCompletion2 = true;
               _didIteratorError2 = false;
               _iteratorError2 = undefined;
-              _context.prev = 30;
+              _context.prev = 29;
               _iterator2 = (0, _getIterator3.default)(query.characteristics);
 
-            case 32:
+            case 31:
               if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                _context.next = 42;
+                _context.next = 41;
                 break;
               }
 
               characteristicUUID = _step2.value;
-              _context.next = 36;
+              _context.next = 35;
               return query.service.getCharacteristic(characteristicUUID);
 
-            case 36:
+            case 35:
               characteristic = _context.sent;
 
               dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
               discoveredCharacteristics.push(characteristic);
 
-            case 39:
+            case 38:
               _iteratorNormalCompletion2 = true;
-              _context.next = 32;
+              _context.next = 31;
               break;
 
-            case 42:
-              _context.next = 48;
+            case 41:
+              _context.next = 47;
               break;
 
-            case 44:
-              _context.prev = 44;
-              _context.t1 = _context['catch'](30);
+            case 43:
+              _context.prev = 43;
+              _context.t1 = _context['catch'](29);
               _didIteratorError2 = true;
               _iteratorError2 = _context.t1;
 
-            case 48:
+            case 47:
+              _context.prev = 47;
               _context.prev = 48;
-              _context.prev = 49;
 
               if (!_iteratorNormalCompletion2 && _iterator2.return) {
                 _iterator2.return();
               }
 
-            case 51:
-              _context.prev = 51;
+            case 50:
+              _context.prev = 50;
 
               if (!_didIteratorError2) {
-                _context.next = 54;
+                _context.next = 53;
                 break;
               }
 
               throw _iteratorError2;
 
+            case 53:
+              return _context.finish(50);
+
             case 54:
-              return _context.finish(51);
+              return _context.finish(47);
 
             case 55:
-              return _context.finish(48);
-
-            case 56:
               commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, { characteristics: discoveredCharacteristics });
 
-            case 57:
+            case 56:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, this, [[9, 13, 17, 25], [18,, 20, 24], [30, 44, 48, 56], [49,, 51, 55]]);
+      }, _callee, this, [[8, 12, 16, 24], [17,, 19, 23], [29, 43, 47, 55], [48,, 50, 54]]);
     }));
 
     function webBluetoothDiscoverCharacteristics(_x, _x2) {
@@ -185,7 +184,6 @@ var CharacteristicActions = {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              console.log('webBluetoothConfigureCharacteristic');
               characteristic = query.characteristic;
 
               if (characteristic.properties.read || characteristic.properties.notify || characteristic.properties.indicate) {
@@ -195,26 +193,26 @@ var CharacteristicActions = {
               }
 
               if (!characteristic.properties.read) {
-                _context2.next = 6;
+                _context2.next = 5;
                 break;
               }
 
-              _context2.next = 6;
+              _context2.next = 5;
               return characteristic.readValue();
 
-            case 6:
+            case 5:
               if (!(characteristic.properties.notify || characteristic.properties.indicate)) {
-                _context2.next = 9;
+                _context2.next = 8;
                 break;
               }
 
-              _context2.next = 9;
+              _context2.next = 8;
               return characteristic.startNotifications();
 
-            case 9:
+            case 8:
               commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, { characteristic: characteristic });
 
-            case 10:
+            case 9:
             case 'end':
               return _context2.stop();
           }

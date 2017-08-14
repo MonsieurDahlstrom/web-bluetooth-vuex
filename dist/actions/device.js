@@ -33,7 +33,7 @@ var DeviceActions = {
               requestParameters = {};
 
               if (query.name !== undefined) {
-                requestParameters['filters'] = query.name;
+                requestParameters['filters'] = [{ name: query.name }];
               } else {
                 requestParameters['acceptAllDevices'] = true;
               }
