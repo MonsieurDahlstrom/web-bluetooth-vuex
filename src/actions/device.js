@@ -40,6 +40,7 @@ const DeviceActions = {
     }
     commit(mutationTypes.BLE_DEVICE_REMOVED, {device: query.device})
   },
+
   async webBluetoothConnectDevice ({ dispatch, commit }, payload) {
     await payload.device.gatt.connect()
     payload.device.GattDisconnectionCallback = function(event) {
