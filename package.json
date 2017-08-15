@@ -17,7 +17,7 @@
   "scripts": {
     "build": "babel src --out-dir dist --source-maps true",
     "unit-test": "mocha test/unit/specs",
-    "test-watch": "nodemon --exec \"mocha test/unit/specs || exit 1\""
+    "unit-test-watch": "nodemon --exec \"mocha test/unit/specs || exit 1\""
   },
   "repository": {
     "type": "git",
