@@ -3,33 +3,44 @@ import * as mutationTypes from '../mutation-types'
 const DeviceActions = {
 
   /*
-  TODO: Change the implemntation to cover all the filter options:
-  {services: ['heart_rate']},
-  {services: [0x1802, 0x1803]},
-  {services: ['c48e6067-5295-48d3-8d5c-0395f61792b1']},
-  {name: 'ExampleName'},
-  {namePrefix: 'Prefix'}
+    action launches the bluetooth native dialog to find devices in the proxmity
+    the query can contain the following keys:
+      * name
+      * namePrefix
+      * services - Setting services without a name or namePrefix will not return any results
+      * optionalServices
   */
   async webBluetoothAddDevice ({ dispatch, commit }, query) {
     var requestParameters = { }
     // Was a device name set for the character
-    if (query.name !== undefined) {
-      requestParameters['filters'] = [{name: query.name}]
-    } else {
+    if(query.name || query.namePrefix) {
+      var filters = []
+      if (query.name) {
+        filters.push({name: query.name})
+      }
+      if (query.namePrefix) {
+        filters.push({namePrefix: query.namePrefix})
+      }
+      requestParameters.filters = filters
+      requestParameters.optionalServices = query.services
+    } else{
       requestParameters['acceptAllDevices'] = true
+      requestParameters.optionalServices = query.services
     }
-    // Does the query specify a collection of services to look for
-    if (query.services !== undefined) {
-      requestParameters['optionalServices'] = query.services.map(service => service.uuid)
+    // Does the query specify a collection of optional services to look for
+    if (query.optionalServices !== undefined) {
+      requestParameters['optionalServices'] = query.optionalServices.map(service => service.uuid)
     }
     // Perform Query
     let device = await navigator.bluetooth.requestDevice(requestParameters)
-    //Add listener for RSSI
-    device.GattAdvertismentCallback = function (event) {
-      dispatch('webBluetoothDeviceAdvertisment', {advertisment: event})
+    if (device) {
+      //Add listener for RSSI
+      device.GattAdvertismentCallback = function (event) {
+        dispatch('webBluetoothDeviceAdvertisment', {advertisment: event})
+      }
+      device.addEventListener('advertisementreceived', device.GattAdvertismentCallback)
+      commit(mutationTypes.BLE_DEVICE_ADDED, {device: device})
     }
-    device.addEventListener('advertisementreceived', device.GattAdvertismentCallback)
-    commit(mutationTypes.BLE_DEVICE_ADDED, {device: device})
   },
 
   async webBluetoothRemoveDevice ({ dispatch, commit }, query) {

@@ -2,7 +2,12 @@ import {factory, ObjectAdapter} from 'factory-girl'
 factory.setAdapter(new ObjectAdapter());
 
 class Device {
+
   constructor () {
+  }
+
+  addEventListener (string,func) {
+
   }
 }
 
