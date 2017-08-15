@@ -10,7 +10,7 @@ const DeviceActions = {
   {name: 'ExampleName'},
   {namePrefix: 'Prefix'}
   */
-  async webBluetoothDiscoverDevice ({ dispatch, commit }, query) {
+  async webBluetoothAddDevice ({ dispatch, commit }, query) {
     var requestParameters = { }
     // Was a device name set for the character
     if (query.name !== undefined) {
@@ -32,6 +32,14 @@ const DeviceActions = {
     commit(mutationTypes.BLE_DEVICE_ADDED, {device: device})
   },
 
+  async webBluetoothRemoveDevice ({ dispatch, commit }, query) {
+    if (query.device.gatt.connected) {
+      payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
+      payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback)
+      await payload.device.gatt.disconnect()
+    }
+    commit(mutationTypes.BLE_DEVICE_REMOVED, {device: query.device})
+  },
   async webBluetoothConnectDevice ({ dispatch, commit }, payload) {
     await payload.device.gatt.connect()
     payload.device.GattDisconnectionCallback = function(event) {
