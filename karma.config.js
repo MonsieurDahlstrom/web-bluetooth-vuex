@@ -3,7 +3,15 @@ const path = require('path');
 module.exports = function(config) {
   config.set({
     basePath: '',
-    browsers: ['ChromeHeadless'],
+
+    browsers: ['ChromeHeadless_BLE'],
+    customLaunchers: {
+     ChromeHeadless_BLE: {
+       base: 'ChromeHeadless',
+       flags: ['--enable-experimental-web-platform-features']
+     }
+   },
+
     frameworks: ['mocha', 'chai', 'sinon'],
 
     files: [

@@ -21,7 +21,18 @@ class Characteristic {
   }
 }
 
+class Gatt {
+  constructor () {
+    this.connected = false
+  }
+}
+
+factory.define('gatt', Gatt, {
+
+})
+
 factory.define('device', Device ,{
+  gatt: factory.create('gatt'),
   connected: true,
   services: []
 });

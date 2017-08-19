@@ -115,13 +115,13 @@ describe("Device actions", function () {
       let payload = {device: this.device}
       let mutations = [
         {
-          type: MutationTypes.BLE_DEVICE_REMOVE,
+          type: MutationTypes.BLE_DEVICE_REMOVED,
           validation: function (payload) {
             expect(payload.device).to.deep.equal(this.device)
           }.bind(this)
         }
       ]
-      var test = new VuexActionTester(DeviceActions.webBluetoothAddDevice, payload, mutations,[],done)
+      var test = new VuexActionTester(DeviceActions.webBluetoothRemoveDevice, payload, mutations,[],done)
       test.run()
     })
   })
