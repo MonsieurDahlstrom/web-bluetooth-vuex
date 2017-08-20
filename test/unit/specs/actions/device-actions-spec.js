@@ -127,12 +127,77 @@ describe("Device actions", function () {
   })
 
   describe("#webBluetoothConnectDevice", function () {
-
+    it('connects device', function (done) {
+      let spy = this.sandbox.spy(this.device.gatt, 'connect')
+      let payload = {device: this.device}
+      let mutations = [
+        {
+          type: MutationTypes.BLE_DEVICE_UPDATED,
+          validation: function (payload) {
+            expect(payload.device).to.deep.equal(this.device)
+            expect(spy.callCount).to.equal(1)
+          }.bind(this)
+        }
+      ]
+      var test = new VuexActionTester(DeviceActions.webBluetoothConnectDevice, payload, mutations,[],done)
+      test.run()
+    })
+    it('checks connected state', function (done) {
+      this.device.gatt.connected = true
+      let payload = {device: this.device}
+      var test = new VuexActionTester(DeviceActions.webBluetoothConnectDevice, payload, [],[],done)
+      test.run()
+    })
   })
 
   describe("#webBluetoothDisconnectDevice", function () {
-
+    it('disconnects device', function (done) {
+      let spy = this.sandbox.spy(this.device.gatt, 'disconnect')
+      let mutations = [
+        {
+          type: MutationTypes.BLE_DEVICE_UPDATED,
+          validation: function (payload) {
+            expect(payload.device).to.deep.equal(this.device)
+            expect(spy.callCount).to.equal(1)
+          }.bind(this)
+        }
+      ]
+      this.device.gatt.connected = true
+      let payload = {device: this.device}
+      var test = new VuexActionTester(DeviceActions.webBluetoothDisconnectDevice, payload, mutations,[],done)
+      test.run()
+    })
+    it('check disconnection state', function (done) {
+      this.device.gatt.connected = false
+      let payload = {device: this.device}
+      var test = new VuexActionTester(DeviceActions.webBluetoothDisconnectDevice, payload, [],[],done)
+      test.run()
+    })
   })
 
+  describe("#webBluetoothWatchAdvertisments", function () {
+    it('disconnects device', function (done) {
+      let spy = this.sandbox.spy(this.device, 'watchAdvertisements')
+      let mutations = [
+        {
+          type: MutationTypes.BLE_DEVICE_UPDATED,
+          validation: function (payload) {
+            expect(payload.device).to.deep.equal(this.device)
+            expect(spy.callCount).to.equal(1)
+          }.bind(this)
+        }
+      ]
+      this.device.gatt.connected = true
+      let payload = {device: this.device}
+      var test = new VuexActionTester(DeviceActions.webBluetoothWatchAdvertisments, payload, mutations,[],done)
+      test.run()
+    })
+    it('check disconnection state', function (done) {
+      this.device.gatt.connected = false
+      let payload = {device: this.device}
+      var test = new VuexActionTester(DeviceActions.webBluetoothWatchAdvertisments, payload, [],[],done)
+      test.run()
+    })
+  })
 
 })
