@@ -12,7 +12,7 @@ const ServiceActions = {
   },
 
   async webBluetoothDiscoverService ({ dispatch, commit }, query) {
-    let service = await query.device.gatt.getPrimaryService(query.serviceUUID)
+    let service = await query.device.gatt.getPrimaryService(query.uuid)
     if (service) {
       dispatch('webBluetoothDiscoverCharacteristics',{service: service})
       commit(MutationTypes.BLE_SERVICE_ADDED, service)

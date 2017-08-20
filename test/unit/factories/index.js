@@ -65,8 +65,9 @@ class Gatt {
   }
 
   async getPrimaryServices() {
-    return this.services
+    return Object.values(this.services)
   }
+
 }
 
 async function generateServicesForGatt (gatt, uuids) {
@@ -128,5 +129,9 @@ factory.define('device', Device, {
 });
 
 
-
+module.exports.Service = Service
+module.exports.Device = Device
+module.exports.Characteristic = Characteristic
+module.exports.Gatt = Gatt
+module.exports.factory = factory
 export default factory

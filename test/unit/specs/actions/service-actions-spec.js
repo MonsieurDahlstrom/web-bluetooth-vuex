@@ -1,32 +1,120 @@
 import {expect} from 'chai'
 import sinon from 'sinon'
 //
-import factory from '../../factories'
+import {factory,Service,Device} from '../../factories'
 import VuexActionTester from '../../helpers/vuex-action-tester.js'
 //
 import ServiceActions from '../../../../src/actions/service.js'
 import * as MutationTypes from '../../../../src/mutation-types'
 
 describe("Service actions", function () {
-  describe("webBluetoothDiscoverServices", function () {
-    it.only('finds service', function (done) {
-      factory.create('device', {name: 'blink'}, {services: [{uuid: 0x180F},{uuid: 0x180A}]})
-      .then(device => {
-        this.device = device
-        done()
-      })
-      .catch(err => done(err))
+
+  before(function () {
+    this.sandbox = sinon.sandbox.create()
+  })
+  beforeEach(function (done) {
+    factory.create('device', {name: 'blink'}, {services: [{uuid: 0x180F},{uuid: 0x180A}]})
+    .then(device => {
+      this.device = device
+      done()
+    })
+  })
+  afterEach(function () {
+    this.device = undefined
+    this.sandbox.restore()
+  })
+
+  describe("#webBluetoothDiscoverServices", function () {
+    it('finds services', function (done) {
+      let payload = {device: this.device}
+      let dispatches = [
+        {
+          type: 'webBluetoothDiscoverCharacteristics',
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        },
+        {
+          type: 'webBluetoothDiscoverCharacteristics',
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        }
+      ]
+      let mutations = [
+        {
+          type: MutationTypes.BLE_SERVICE_ADDED,
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        },
+        {
+          type: MutationTypes.BLE_SERVICE_ADDED,
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        }
+      ]
+      var test = new VuexActionTester(ServiceActions.webBluetoothDiscoverServices, payload, mutations,dispatches,done)
+      test.run()
     })
     it('serviceadded')
     it('servicechanged')
     it('serviceremoved')
   })
-  xdescribe("webBluetoothDiscoverService", function () {
+  describe("webBluetoothDiscoverService", function () {
+    it('finds service', function (done) {
+      let payload = {device: this.device, uuid: 0x180F}
+      let dispatches = [
+        {
+          type: 'webBluetoothDiscoverCharacteristics',
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        }
+      ]
+      let mutations = [
+        {
+          type: MutationTypes.BLE_SERVICE_ADDED,
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        }
+      ]
+      var test = new VuexActionTester(ServiceActions.webBluetoothDiscoverService, payload, mutations,dispatches,done)
+      test.run()
+    })
+    it('does not find service', function (done) {
+      let payload = {device: this.device, uuid: 0x180D}
+      var test = new VuexActionTester(ServiceActions.webBluetoothDiscoverService, payload, [], [], done)
+      test.run()
+    })
     it('serviceadded')
     it('servicechanged')
     it('serviceremoved')
   })
-  xdescribe("webBluetoothRemoveService", function () {
+  describe("#webBluetoothRemoveService", function () {
+    it('removes service', function (done) {
+      let payload = {device: this.device, uuid: 0x180F}
+      let dispatches = [
+        {
+          type: 'webBluetoothRemoveCharacteristics',
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        }
+      ]
+      let mutations = [
+        {
+          type: MutationTypes.BLE_SERVICE_REMOVED,
+          validation: function (payload) {
+            expect(payload.service instanceof Service)
+          }.bind(this)
+        }
+      ]
+      var test = new VuexActionTester(ServiceActions.webBluetoothRemoveService, payload, mutations, dispatches, done)
+      test.run()
+    })
     it('serviceadded')
     it('servicechanged')
     it('serviceremoved')
