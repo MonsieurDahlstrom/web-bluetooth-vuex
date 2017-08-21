@@ -29,6 +29,7 @@ class Service {
 
   constructor () {
     this.characteristics = []
+    this.device = undefined
   }
 
   async getCharacteristic(bluetoothServiceUUID) {

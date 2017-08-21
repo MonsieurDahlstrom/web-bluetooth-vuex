@@ -1,7 +1,8 @@
 import {expect} from 'chai'
-//
 import Vue from 'vue'
 import Vuex from 'vuex'
+//
+import {factory, Service} from '../factories'
 //
 import {VueBluetoothLEMixin, VuexBluetoothLEModule} from '../../../src'
 import WebBluetoothModule from '../../../src'
@@ -19,20 +20,77 @@ describe("WebBluetoothModule", function() {
         beforeEach(function() {
           this.store = new Vuex.Store({state: { }, modules: {WebBluetoothModule}})
         })
-        it('#webBluetoothDevices', function () {
-          expect(this.store.getters.webBluetoothDevices).to.be.an('array')
+        describe('#webBluetoothDevices', function () {
+
+          it('lists stored devices', function (done) {
+            factory.create('device')
+            .then(device => {
+              let result = this.store.getters.webBluetoothDevices
+              expect(result).to.be.an('Array')
+              done()
+            })
+          })
+
         })
-        it("#webBluetoothServicesForDevice", function () {
-          expect(this.store.getters.webBluetoothServicesForDevice).to.be.an('function')
+
+        describe('#webBluetoothServicesForDevice', function () {
+
+          it('lists services', function (done) {
+            factory.create('device',{},{services: [{uuid: 0x180F},{uuid: 0x180A}]})
+            .then(device => {
+              try {
+                for (let service of Object.values(device.gatt.services)) {
+                  service.device = device
+                  this.store.state.WebBluetoothModule.services.push(service)
+                }
+                let result = this.store.getters.webBluetoothServicesForDevice(device)
+                expect(result).to.be.an('Array')
+                expect(result.length).to.equal(2)
+                done()
+              }catch (err) {
+                done(err)
+              }
+            })
+          })
+
         })
-        it("#webBluetoothServiceForDevice", function () {
-          expect(this.store.getters.webBluetoothServiceForDevice).to.be.an('function')
-        })
-        it("#webBluetoothCharacteristicsForService", function () {
-          expect(this.store.getters.webBluetoothCharacteristicsForService).to.be.an('function')
-        })
-        it("#webBluetoothCharacteristicForService", function () {
-          expect(this.store.getters.webBluetoothCharacteristicForService).to.be.an('function')
+
+        describe('#webBluetoothServiceForDevice', function () {
+
+          it('retrive uuid16 service', function (done) {
+            factory.create('device',{},{services: [{uuid: 0x180F},{uuid: 0x180A}]})
+            .then(device => {
+              try {
+                for (let service of Object.values(device.gatt.services)) {
+                  service.device = device
+                  this.store.state.WebBluetoothModule.services.push(service)
+                }
+                let result = this.store.getters.webBluetoothServiceForDevice(device,0x180F)
+                expect(result instanceof Service).to.be.true
+                done()
+              }catch (err) {
+                done(err)
+              }
+            })
+          })
+
+          it('retrive uuid128 service', function (done) {
+            factory.create('device',{},{services: [{uuid: 0x180F}, {uuid: 0x180A}, {uuid: '0000fe59-0000-1000-8000-00805f9b34fb'}]})
+            .then(device => {
+              try {
+                for (let service of Object.values(device.gatt.services)) {
+                  service.device = device
+                  this.store.state.WebBluetoothModule.services.push(service)
+                }
+                let result = this.store.getters.webBluetoothServiceForDevice(device,'0000fe59-0000-1000-8000-00805f9b34fb')
+                expect(result instanceof Service).to.be.true
+                done()
+              } catch (err) {
+                done(err)
+              }
+            })
+          })
+
         })
       })
     })
