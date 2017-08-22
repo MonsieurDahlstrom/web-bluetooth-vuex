@@ -60,10 +60,6 @@ var DeviceActions = {
               device = _context.sent;
 
               if (device) {
-                device.GattAdvertismentCallback = function (event) {
-                  dispatch('webBluetoothDeviceAdvertisment', { advertisment: event });
-                };
-                device.addEventListener('advertisementreceived', device.GattAdvertismentCallback);
                 commit(mutationTypes.BLE_DEVICE_ADDED, { device: device });
               }
 
@@ -81,7 +77,7 @@ var DeviceActions = {
 
     return webBluetoothAddDevice;
   }(),
-  webBluetoothRemoveDevice: function () {
+  webBluetoothWatchAdvertisments: function () {
     var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(_ref3, query) {
       var dispatch = _ref3.dispatch,
           commit = _ref3.commit;
@@ -90,17 +86,19 @@ var DeviceActions = {
           switch (_context2.prev = _context2.next) {
             case 0:
               if (!query.device.gatt.connected) {
-                _context2.next = 5;
+                _context2.next = 6;
                 break;
               }
 
-              payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-              payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
+              query.device.GattAdvertismentCallback = function (event) {
+                dispatch('webBluetoothDeviceAdvertisment', { advertisment: event });
+              };
+              query.device.addEventListener('advertisementreceived', query.device.GattAdvertismentCallback);
               _context2.next = 5;
-              return payload.device.gatt.disconnect();
+              return query.device.watchAdvertisements();
 
             case 5:
-              commit(mutationTypes.BLE_DEVICE_REMOVED, { device: query.device });
+              commit(mutationTypes.BLE_DEVICE_UPDATED, { device: query.device });
 
             case 6:
             case 'end':
@@ -110,31 +108,34 @@ var DeviceActions = {
       }, _callee2, this);
     }));
 
-    function webBluetoothRemoveDevice(_x3, _x4) {
+    function webBluetoothWatchAdvertisments(_x3, _x4) {
       return _ref4.apply(this, arguments);
     }
 
-    return webBluetoothRemoveDevice;
+    return webBluetoothWatchAdvertisments;
   }(),
-  webBluetoothConnectDevice: function () {
-    var _ref6 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(_ref5, payload) {
+  webBluetoothRemoveDevice: function () {
+    var _ref6 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(_ref5, query) {
       var dispatch = _ref5.dispatch,
           commit = _ref5.commit;
       return _regenerator2.default.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
-              return payload.device.gatt.connect();
+              if (!query.device.gatt.connected) {
+                _context3.next = 5;
+                break;
+              }
 
-            case 2:
-              payload.device.GattDisconnectionCallback = function (event) {
-                dispatch('webBluetoothDisconnectDevice', { device: event.currentTarget });
-              };
-              payload.device.addEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-              commit(mutationTypes.BLE_DEVICE_UPDATED, { device: payload.device });
+              payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
+              payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
+              _context3.next = 5;
+              return payload.device.gatt.disconnect();
 
             case 5:
+              commit(mutationTypes.BLE_DEVICE_REMOVED, { device: query.device });
+
+            case 6:
             case 'end':
               return _context3.stop();
           }
@@ -142,13 +143,13 @@ var DeviceActions = {
       }, _callee3, this);
     }));
 
-    function webBluetoothConnectDevice(_x5, _x6) {
+    function webBluetoothRemoveDevice(_x5, _x6) {
       return _ref6.apply(this, arguments);
     }
 
-    return webBluetoothConnectDevice;
+    return webBluetoothRemoveDevice;
   }(),
-  webBluetoothDisconnectDevice: function () {
+  webBluetoothConnectDevice: function () {
     var _ref8 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(_ref7, payload) {
       var dispatch = _ref7.dispatch,
           commit = _ref7.commit;
@@ -156,17 +157,19 @@ var DeviceActions = {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              if (!payload.device.gatt.connected) {
-                _context4.next = 5;
+              if (payload.device.gatt.connected) {
+                _context4.next = 6;
                 break;
               }
 
-              payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-              payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
-              _context4.next = 5;
-              return payload.device.gatt.disconnect();
+              _context4.next = 3;
+              return payload.device.gatt.connect();
 
-            case 5:
+            case 3:
+              payload.device.GattDisconnectionCallback = function (event) {
+                dispatch('webBluetoothDisconnectDevice', { device: event.currentTarget });
+              };
+              payload.device.addEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
               commit(mutationTypes.BLE_DEVICE_UPDATED, { device: payload.device });
 
             case 6:
@@ -177,8 +180,43 @@ var DeviceActions = {
       }, _callee4, this);
     }));
 
-    function webBluetoothDisconnectDevice(_x7, _x8) {
+    function webBluetoothConnectDevice(_x7, _x8) {
       return _ref8.apply(this, arguments);
+    }
+
+    return webBluetoothConnectDevice;
+  }(),
+  webBluetoothDisconnectDevice: function () {
+    var _ref10 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee5(_ref9, payload) {
+      var dispatch = _ref9.dispatch,
+          commit = _ref9.commit;
+      return _regenerator2.default.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              if (!payload.device.gatt.connected) {
+                _context5.next = 6;
+                break;
+              }
+
+              payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
+              payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
+              _context5.next = 5;
+              return payload.device.gatt.disconnect();
+
+            case 5:
+              commit(mutationTypes.BLE_DEVICE_UPDATED, { device: payload.device });
+
+            case 6:
+            case 'end':
+              return _context5.stop();
+          }
+        }
+      }, _callee5, this);
+    }));
+
+    function webBluetoothDisconnectDevice(_x9, _x10) {
+      return _ref10.apply(this, arguments);
     }
 
     return webBluetoothDisconnectDevice;

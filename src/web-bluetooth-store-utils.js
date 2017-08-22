@@ -10,15 +10,12 @@ export const DFUSecurePacket = DFU_CHAR_BASE.replace('xxxx', '0002')
 
 const WebBluetoothStoreUtils = {
   methods: {
-    cannonicalUUIDFor16bitUUID: function (UUID16) {
-      return Cannonical128UUIDBase.replace('XXXX', UUID16.toString(16))
-    },
     disService: function (device) {
-      var DeviceInformationUUID = this.cannonicalUUIDFor16bitUUID(0x180A)
+      var DeviceInformationUUID = BluetoothUUID.canonicalUUID(0x180A)
       return this.$store.getters.webBluetoothServicesForDevice(device).find((service) => service.uuid === DeviceInformationUUID)
     },
     dfuService: function (device) {
-      return this.$store.getters.webBluetoothServicesForDevice(device).find((service) => service.uuid === DFU_BASE)
+      return this.$store.getters.webBluetoothServicesForDevice(device).find((service) => service.uuid === DFUSecure)
     },
     valueForCharacteristicUUID: function (service, uuid) {
       var characteristic = this.$store.getters.webBluetoothCharacteristicsForService(service).find((characteristic) => characteristic.uuid === uuid)

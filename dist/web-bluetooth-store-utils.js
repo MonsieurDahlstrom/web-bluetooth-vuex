@@ -13,18 +13,15 @@ var DFUSecurePacket = exports.DFUSecurePacket = DFU_CHAR_BASE.replace('xxxx', '0
 
 var WebBluetoothStoreUtils = {
   methods: {
-    cannonicalUUIDFor16bitUUID: function cannonicalUUIDFor16bitUUID(UUID16) {
-      return Cannonical128UUIDBase.replace('XXXX', UUID16.toString(16));
-    },
     disService: function disService(device) {
-      var DeviceInformationUUID = this.cannonicalUUIDFor16bitUUID(0x180A);
+      var DeviceInformationUUID = BluetoothUUID.canonicalUUID(0x180A);
       return this.$store.getters.webBluetoothServicesForDevice(device).find(function (service) {
         return service.uuid === DeviceInformationUUID;
       });
     },
     dfuService: function dfuService(device) {
       return this.$store.getters.webBluetoothServicesForDevice(device).find(function (service) {
-        return service.uuid === DFU_BASE;
+        return service.uuid === DFUSecure;
       });
     },
     valueForCharacteristicUUID: function valueForCharacteristicUUID(service, uuid) {

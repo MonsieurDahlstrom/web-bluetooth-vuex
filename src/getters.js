@@ -1,3 +1,5 @@
+import WebBluetoothStoreUtils from './web-bluetooth-store-utils'
+
 const getters = {
   webBluetoothDevices: (state, getters) =>  {
     return state.devices

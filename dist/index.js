@@ -32,6 +32,10 @@ var _characteristic3 = require('./mutations/characteristic');
 
 var _characteristic4 = _interopRequireDefault(_characteristic3);
 
+var _getters = require('./getters.js');
+
+var _getters2 = _interopRequireDefault(_getters);
+
 var _webBluetoothStoreUtils = require('./web-bluetooth-store-utils.js');
 
 var _webBluetoothStoreUtils2 = _interopRequireDefault(_webBluetoothStoreUtils);
@@ -44,47 +48,13 @@ var state = {
   characteristics: []
 };
 
-var getters = {
-  webBluetoothDevices: function webBluetoothDevices(state) {
-    return state.devices;
-  },
-  webBluetoothServicesForDevice: function webBluetoothServicesForDevice(state) {
-    return function (device) {
-      return state.services.filter(function (service) {
-        return service.device === device;
-      });
-    };
-  },
-  webBluetoothServiceForDevice: function webBluetoothServiceForDevice(state) {
-    return function (device, uuid) {
-      return state.services.filter(function (service) {
-        return service.device === device && service.uuid === uid;
-      });
-    };
-  },
-  webBluetoothCharacteristicsForService: function webBluetoothCharacteristicsForService(state) {
-    return function (service) {
-      return state.characteristics.filter(function (characteristic) {
-        return characteristic.service === service;
-      });
-    };
-  },
-  webBluetoothCharacteristicForService: function webBluetoothCharacteristicForService(state) {
-    return function (service, uuid) {
-      return state.characteristics.filter(function (characteristic) {
-        return characteristic.service === service && characteristic.uuid === uuid;
-      });
-    };
-  }
-};
-
 var actions = (0, _assign2.default)({}, _device2.default, _service2.default, _characteristic2.default);
 
 var mutations = (0, _assign2.default)({}, _device4.default, _service4.default, _characteristic4.default);
 
 var VuexBluetoothLEModule = {
   state: state,
-  getters: getters,
+  getters: _getters2.default,
   actions: actions,
   mutations: mutations
 };

@@ -64,7 +64,8 @@ describe("Service actions", function () {
   })
   describe("webBluetoothDiscoverService", function () {
     it('finds service', function (done) {
-      let payload = {device: this.device, uuid: 0x180F}
+      let uuid = BluetoothUUID.canonicalUUID(0x180F)
+      let payload = {device: this.device, uuid: uuid}
       let dispatches = [
         {
           type: 'webBluetoothDiscoverCharacteristics',
@@ -85,7 +86,8 @@ describe("Service actions", function () {
       test.run()
     })
     it('does not find service', function (done) {
-      let payload = {device: this.device, uuid: 0x180D}
+      let uuid = BluetoothUUID.canonicalUUID(0x180D)
+      let payload = {device: this.device, uuid: uuid}
       var test = new VuexActionTester(ServiceActions.webBluetoothDiscoverService, payload, [], [], done)
       test.run()
     })

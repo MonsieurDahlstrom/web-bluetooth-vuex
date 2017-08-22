@@ -98,6 +98,10 @@ factory.define('service', Service, {
   characteristics: []
 }, {
   afterBuild: (model,attrs,buildOptions) => {
+    if (typeof(model.uuid) === 'number') {
+      let modelString = model.uuid.toString(16)
+      model.uuid = '0000XXXX-0000-1000-8000-00805f9b34fb'.replace('XXXX', modelString)
+    }
     if(buildOptions.characteristics) {
       return generateCharacteristicsForService(model,buildOptions.characteristics)
     } else {

@@ -65,7 +65,8 @@ describe("WebBluetoothModule", function() {
                   service.device = device
                   this.store.state.WebBluetoothModule.services.push(service)
                 }
-                let result = this.store.getters.webBluetoothServiceForDevice(device,0x180F)
+                let uuid = BluetoothUUID.canonicalUUID(0x180F)
+                let result = this.store.getters.webBluetoothServiceForDevice(device, uuid)
                 expect(result instanceof Service).to.be.true
                 done()
               }catch (err) {
