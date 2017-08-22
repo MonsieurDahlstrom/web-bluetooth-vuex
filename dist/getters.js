@@ -37,7 +37,7 @@ var getters = {
   },
   webBluetoothCharacteristicForService: function webBluetoothCharacteristicForService(state, getters) {
     return function (service, uuid) {
-      return state.characteristics.filter(function (characteristic) {
+      return state.characteristics.find(function (characteristic) {
         return characteristic.service === service && characteristic.uuid === uuid;
       });
     };

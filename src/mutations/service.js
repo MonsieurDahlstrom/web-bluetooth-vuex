@@ -3,8 +3,8 @@ import * as MutationTypes from '../mutation-types'
 
 const ServiceMutatations = {
 
-  [MutationTypes.BLE_SERVICES_DISCOVERED] (state, payload) {
-    for(var service of payload.services) {
+  [MutationTypes.BLE_SERVICE_ADDED] (state, service) {
+    if (service) {
       var serviceIndex = state.services.indexOf(service)
       if (serviceIndex < 0) {
         state.services.push(service)
@@ -14,12 +14,21 @@ const ServiceMutatations = {
     }
   },
 
-  [MutationTypes.BLE_SERVICE_CHANGED] (state, payload) {
-    var serviceIndex = state.services.indexOf(payload.service)
-    if (serviceIndex < 0) {
-      state.services.push(payload.service)
-    } else {
-      state.services.splice(serviceIndex,1,payload.service)
+  [MutationTypes.BLE_SERVICE_CHANGED] (state, service) {
+    if (service) {
+      var serviceIndex = state.services.indexOf(service)
+      if (serviceIndex) {
+        state.services.splice(serviceIndex,1, service)
+      }
+    }
+  },
+
+  [MutationTypes.BLE_SERVICE_REMOVED] (state, service) {
+    if (service) {
+      var serviceIndex = state.services.indexOf(service)
+      if (service) {
+        state.services.splice(serviceIndex,1)
+      }
     }
   }
 

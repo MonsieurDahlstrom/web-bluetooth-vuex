@@ -16,7 +16,7 @@ const getters = {
     return state.characteristics.filter((characteristic) => characteristic.service === service)
   },
   webBluetoothCharacteristicForService: (state, getters) => (service, uuid) => {
-    return state.characteristics.filter((characteristic) => characteristic.service === service && characteristic.uuid === uuid)
+    return state.characteristics.find((characteristic) => characteristic.service === service && characteristic.uuid === uuid)
   }
 }
 

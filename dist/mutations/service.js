@@ -8,10 +8,6 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _getIterator2 = require('babel-runtime/core-js/get-iterator');
-
-var _getIterator3 = _interopRequireDefault(_getIterator2);
-
 var _ServiceMutatations;
 
 var _vue = require('vue');
@@ -26,42 +22,28 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ServiceMutatations = (_ServiceMutatations = {}, (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICES_DISCOVERED, function (state, payload) {
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = (0, _getIterator3.default)(payload.services), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var service = _step.value;
-
-      var serviceIndex = state.services.indexOf(service);
-      if (serviceIndex < 0) {
-        state.services.push(service);
-      } else {
-        state.services.splice(serviceIndex, 1, service);
-      }
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
+var ServiceMutatations = (_ServiceMutatations = {}, (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICE_ADDED, function (state, service) {
+  if (service) {
+    var serviceIndex = state.services.indexOf(service);
+    if (serviceIndex < 0) {
+      state.services.push(service);
+    } else {
+      state.services.splice(serviceIndex, 1, service);
     }
   }
-}), (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICE_CHANGED, function (state, payload) {
-  var serviceIndex = state.services.indexOf(payload.service);
-  if (serviceIndex < 0) {
-    state.services.push(payload.service);
-  } else {
-    state.services.splice(serviceIndex, 1, payload.service);
+}), (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICE_CHANGED, function (state, service) {
+  if (service) {
+    var serviceIndex = state.services.indexOf(service);
+    if (serviceIndex) {
+      state.services.splice(serviceIndex, 1, service);
+    }
+  }
+}), (0, _defineProperty3.default)(_ServiceMutatations, MutationTypes.BLE_SERVICE_REMOVED, function (state, service) {
+  if (service) {
+    var serviceIndex = state.services.indexOf(service);
+    if (service) {
+      state.services.splice(serviceIndex, 1);
+    }
   }
 }), _ServiceMutatations);
 exports.default = ServiceMutatations;
