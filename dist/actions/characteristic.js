@@ -39,7 +39,7 @@ var CharacteristicActions = {
               discoveredCharacteristics = [];
 
               if (!(query.characteristics === undefined)) {
-                _context.next = 26;
+                _context.next = 34;
                 break;
               }
 
@@ -52,121 +52,137 @@ var CharacteristicActions = {
               _didIteratorError = false;
               _iteratorError = undefined;
               _context.prev = 8;
+              _iterator = (0, _getIterator3.default)(characteristics);
 
-              for (_iterator = (0, _getIterator3.default)(characteristics); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                characteristic = _step.value;
-
-                dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
-                discoveredCharacteristics.push(characteristic);
+            case 10:
+              if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
+                _context.next = 18;
+                break;
               }
-              _context.next = 16;
+
+              characteristic = _step.value;
+              _context.next = 14;
+              return dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
+
+            case 14:
+              discoveredCharacteristics.push(characteristic);
+
+            case 15:
+              _iteratorNormalCompletion = true;
+              _context.next = 10;
               break;
 
-            case 12:
-              _context.prev = 12;
+            case 18:
+              _context.next = 24;
+              break;
+
+            case 20:
+              _context.prev = 20;
               _context.t0 = _context['catch'](8);
               _didIteratorError = true;
               _iteratorError = _context.t0;
 
-            case 16:
-              _context.prev = 16;
-              _context.prev = 17;
+            case 24:
+              _context.prev = 24;
+              _context.prev = 25;
 
               if (!_iteratorNormalCompletion && _iterator.return) {
                 _iterator.return();
               }
 
-            case 19:
-              _context.prev = 19;
+            case 27:
+              _context.prev = 27;
 
               if (!_didIteratorError) {
-                _context.next = 22;
+                _context.next = 30;
                 break;
               }
 
               throw _iteratorError;
 
-            case 22:
-              return _context.finish(19);
+            case 30:
+              return _context.finish(27);
 
-            case 23:
-              return _context.finish(16);
+            case 31:
+              return _context.finish(24);
 
-            case 24:
-              _context.next = 55;
+            case 32:
+              _context.next = 64;
               break;
 
-            case 26:
+            case 34:
               _iteratorNormalCompletion2 = true;
               _didIteratorError2 = false;
               _iteratorError2 = undefined;
-              _context.prev = 29;
+              _context.prev = 37;
               _iterator2 = (0, _getIterator3.default)(query.characteristics);
 
-            case 31:
+            case 39:
               if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                _context.next = 41;
+                _context.next = 50;
                 break;
               }
 
               characteristicUUID = _step2.value;
-              _context.next = 35;
+              _context.next = 43;
               return query.service.getCharacteristic(characteristicUUID);
 
-            case 35:
+            case 43:
               characteristic = _context.sent;
+              _context.next = 46;
+              return dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
 
-              dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
+            case 46:
               discoveredCharacteristics.push(characteristic);
 
-            case 38:
+            case 47:
               _iteratorNormalCompletion2 = true;
-              _context.next = 31;
+              _context.next = 39;
               break;
 
-            case 41:
-              _context.next = 47;
+            case 50:
+              _context.next = 56;
               break;
 
-            case 43:
-              _context.prev = 43;
-              _context.t1 = _context['catch'](29);
+            case 52:
+              _context.prev = 52;
+              _context.t1 = _context['catch'](37);
               _didIteratorError2 = true;
               _iteratorError2 = _context.t1;
 
-            case 47:
-              _context.prev = 47;
-              _context.prev = 48;
+            case 56:
+              _context.prev = 56;
+              _context.prev = 57;
 
               if (!_iteratorNormalCompletion2 && _iterator2.return) {
                 _iterator2.return();
               }
 
-            case 50:
-              _context.prev = 50;
+            case 59:
+              _context.prev = 59;
 
               if (!_didIteratorError2) {
-                _context.next = 53;
+                _context.next = 62;
                 break;
               }
 
               throw _iteratorError2;
 
-            case 53:
-              return _context.finish(50);
+            case 62:
+              return _context.finish(59);
 
-            case 54:
-              return _context.finish(47);
+            case 63:
+              return _context.finish(56);
 
-            case 55:
+            case 64:
               commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, { characteristics: discoveredCharacteristics });
 
-            case 56:
+            case 65:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, this, [[8, 12, 16, 24], [17,, 19, 23], [29, 43, 47, 55], [48,, 50, 54]]);
+      }, _callee, this, [[8, 20, 24, 32], [25,, 27, 31], [37, 52, 56, 64], [57,, 59, 63]]);
     }));
 
     function webBluetoothDiscoverCharacteristics(_x, _x2) {

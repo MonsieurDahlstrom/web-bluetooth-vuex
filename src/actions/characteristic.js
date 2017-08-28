@@ -6,13 +6,13 @@ const CharacteristicActions = {
     if (query.characteristics === undefined) {
       var characteristics = await query.service.getCharacteristics()
       for (var characteristic of characteristics) {
-        dispatch('webBluetoothConfigureCharacteristic', {characteristic: characteristic})
+        await dispatch('webBluetoothConfigureCharacteristic', {characteristic: characteristic})
         discoveredCharacteristics.push(characteristic)
       }
     } else {
       for (let characteristicUUID of query.characteristics) {
         var characteristic = await query.service.getCharacteristic(characteristicUUID)
-        dispatch('webBluetoothConfigureCharacteristic', {characteristic: characteristic})
+        await dispatch('webBluetoothConfigureCharacteristic', {characteristic: characteristic})
         discoveredCharacteristics.push(characteristic)
       }
     }
