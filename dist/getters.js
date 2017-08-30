@@ -14,6 +14,13 @@ var getters = {
   webBluetoothDevices: function webBluetoothDevices(state, getters) {
     return state.devices;
   },
+  webBluetoothDevice: function webBluetoothDevice(state, getters) {
+    return function (deviceAddress) {
+      return state.devices.find(function (device) {
+        return device.id === deviceAddress;
+      });
+    };
+  },
   webBluetoothServicesForDevice: function webBluetoothServicesForDevice(state, getters) {
     return function (device) {
       return state.services.filter(function (service) {

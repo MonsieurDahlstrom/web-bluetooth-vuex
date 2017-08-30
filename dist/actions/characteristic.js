@@ -271,6 +271,9 @@ var CharacteristicActions = {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
+              commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query);
+
+            case 1:
             case 'end':
               return _context4.stop();
           }

@@ -4,6 +4,9 @@ const getters = {
   webBluetoothDevices: (state, getters) =>  {
     return state.devices
   },
+  webBluetoothDevice: (state, getters) => (deviceAddress) => {
+    return state.devices.find(device => device.id === deviceAddress)
+  },
   webBluetoothServicesForDevice: (state, getters) => (device) => {
     return state.services.filter((service) => {
       return service.device === device

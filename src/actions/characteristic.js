@@ -36,6 +36,7 @@ const CharacteristicActions = {
   async webBluetoothWriteCharacteristic({ dispatch, commit }, query) {
   },
   async webBluetoothUpdateCharacteristic({ dispatch, commit }, query) {
+    commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query)
   },
 }
 
