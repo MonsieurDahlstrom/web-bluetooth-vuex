@@ -127,10 +127,10 @@ var DeviceActions = {
                 break;
               }
 
-              payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-              payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
+              query.device.removeEventListener('gattserverdisconnected', query.device.GattDisconnectionCallback);
+              query.device.removeEventListener('advertisementreceived', query.device.GattAdvertismentCallback);
               _context3.next = 5;
-              return payload.device.gatt.disconnect();
+              return query.device.gatt.disconnect();
 
             case 5:
               commit(mutationTypes.BLE_DEVICE_REMOVED, { device: query.device });

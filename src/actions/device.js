@@ -52,9 +52,9 @@ const DeviceActions = {
 
   async webBluetoothRemoveDevice ({ dispatch, commit }, query) {
     if (query.device.gatt.connected) {
-      payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
-      payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback)
-      await payload.device.gatt.disconnect()
+      query.device.removeEventListener('gattserverdisconnected', query.device.GattDisconnectionCallback)
+      query.device.removeEventListener('advertisementreceived', query.device.GattAdvertismentCallback)
+      await query.device.gatt.disconnect()
     }
     commit(mutationTypes.BLE_DEVICE_REMOVED, {device: query.device})
   },
