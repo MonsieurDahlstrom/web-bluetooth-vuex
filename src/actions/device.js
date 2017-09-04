@@ -50,7 +50,7 @@ const DeviceActions = {
     }
   },
 
-  async webBluetoothRemoveDevice ({ dispatch, commit }, query) {
+  async webBluetoothRemoveDevice ({dispatch, commit}, query) {
     if (query.device.gatt.connected) {
       query.device.removeEventListener('gattserverdisconnected', query.device.GattDisconnectionCallback)
       query.device.removeEventListener('advertisementreceived', query.device.GattAdvertismentCallback)

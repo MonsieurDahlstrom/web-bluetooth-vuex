@@ -25,10 +25,13 @@ const ServiceMutatations = {
 
   [MutationTypes.BLE_SERVICE_REMOVED] (state, service) {
     if (service) {
-      var serviceIndex = state.services.indexOf(service)
-      if (service) {
-        state.services.splice(serviceIndex,1)
+      let characteristics = state.characteristics.filter(characteristic => service === characteristic.service)
+      for(characteristic of characteristics) {
+        let characteristicIndex = state.characteristics.indexOf(characteristic)
+        state.characteristics.splice(characteristicIndex,1)
       }
+      var serviceIndex = state.services.indexOf(service)
+      state.services.splice(serviceIndex,1)
     }
   }
 

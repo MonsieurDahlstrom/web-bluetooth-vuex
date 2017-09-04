@@ -29,10 +29,10 @@ describe("DeviceMutations", function() {
     })
   })
 
-  describe('#DEVICE_REMOVED', function() {
+  describe.only('#DEVICE_REMOVED', function() {
     it('changed state', function () {
-      let payload = {device: this.device}
       this.state.devices.push(this.device)
+      let payload = {device: this.device}
       DeviceMutations[MutationTypes.BLE_DEVICE_REMOVED](this.state,payload)
       expect(this.state.devices.length).to.equal(0)
     })
