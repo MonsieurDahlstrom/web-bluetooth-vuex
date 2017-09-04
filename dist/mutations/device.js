@@ -39,7 +39,7 @@ var DeviceMutatations = (_DeviceMutatations = {}, (0, _defineProperty3.default)(
     return service.device === payload.device;
   });
   var characteristics = state.characteristics.filter(function (characteristic) {
-    return services.include(characteristic.service);
+    return services.includes(characteristic.service);
   });
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
@@ -47,9 +47,9 @@ var DeviceMutatations = (_DeviceMutatations = {}, (0, _defineProperty3.default)(
 
   try {
     for (var _iterator = (0, _getIterator3.default)(characteristics), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      characteristic = _step.value;
+      var characterToDelete = _step.value;
 
-      var characteristicIndex = state.characteristics.indexOf(characteristic);
+      var characteristicIndex = state.characteristics.indexOf(characterToDelete);
       state.characteristics.splice(characteristicIndex, 1);
     }
   } catch (err) {
@@ -73,9 +73,9 @@ var DeviceMutatations = (_DeviceMutatations = {}, (0, _defineProperty3.default)(
 
   try {
     for (var _iterator2 = (0, _getIterator3.default)(services), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      service = _step2.value;
+      var serviceToDelete = _step2.value;
 
-      var serviceIndex = state.services.indexOf(service);
+      var serviceIndex = state.services.indexOf(serviceToDelete);
       state.services.splice(serviceIndex, 1);
     }
   } catch (err) {

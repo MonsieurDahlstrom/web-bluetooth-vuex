@@ -13,13 +13,13 @@ const DeviceMutatations = {
   [MutationTypes.BLE_DEVICE_REMOVED] (state, payload) {
     const deviceIndex = state.devices.indexOf(payload.device)
     let services = state.services.filter(service => service.device === payload.device)
-    let characteristics = state.characteristics.filter(characteristic => services.include(characteristic.service))
-    for(characteristic of characteristics) {
-      let characteristicIndex = state.characteristics.indexOf(characteristic)
+    let characteristics = state.characteristics.filter(characteristic => services.includes(characteristic.service))
+    for(let characterToDelete of characteristics) {
+      let characteristicIndex = state.characteristics.indexOf(characterToDelete)
       state.characteristics.splice(characteristicIndex,1)
     }
-    for(service of services) {
-      let serviceIndex = state.services.indexOf(service)
+    for(let serviceToDelete of services) {
+      let serviceIndex = state.services.indexOf(serviceToDelete)
       state.services.splice(serviceIndex,1)
     }
     state.devices.splice(deviceIndex, 1)
