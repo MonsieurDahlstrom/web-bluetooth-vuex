@@ -16,6 +16,517 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
+var cov_h9xkk3li7 = function () {
+  var path = '/Users/mdahlstrom/Documents/GitHub/web-bluetooth-vuex-module/src/actions/characteristic.js',
+      hash = '607724bcfaa6a3f093dd94c2691896cfd3c77ef7',
+      global = new Function('return this')(),
+      gcv = '__coverage__',
+      coverageData = {
+    path: '/Users/mdahlstrom/Documents/GitHub/web-bluetooth-vuex-module/src/actions/characteristic.js',
+    statementMap: {
+      '0': {
+        start: {
+          line: 3,
+          column: 30
+        },
+        end: {
+          line: 41,
+          column: 1
+        }
+      },
+      '1': {
+        start: {
+          line: 5,
+          column: 36
+        },
+        end: {
+          line: 5,
+          column: 38
+        }
+      },
+      '2': {
+        start: {
+          line: 6,
+          column: 4
+        },
+        end: {
+          line: 18,
+          column: 5
+        }
+      },
+      '3': {
+        start: {
+          line: 7,
+          column: 28
+        },
+        end: {
+          line: 7,
+          column: 68
+        }
+      },
+      '4': {
+        start: {
+          line: 8,
+          column: 6
+        },
+        end: {
+          line: 11,
+          column: 7
+        }
+      },
+      '5': {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 95
+        }
+      },
+      '6': {
+        start: {
+          line: 10,
+          column: 8
+        },
+        end: {
+          line: 10,
+          column: 54
+        }
+      },
+      '7': {
+        start: {
+          line: 13,
+          column: 6
+        },
+        end: {
+          line: 17,
+          column: 7
+        }
+      },
+      '8': {
+        start: {
+          line: 14,
+          column: 29
+        },
+        end: {
+          line: 14,
+          column: 86
+        }
+      },
+      '9': {
+        start: {
+          line: 15,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 95
+        }
+      },
+      '10': {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 16,
+          column: 54
+        }
+      },
+      '11': {
+        start: {
+          line: 19,
+          column: 4
+        },
+        end: {
+          line: 19,
+          column: 102
+        }
+      },
+      '12': {
+        start: {
+          line: 22,
+          column: 25
+        },
+        end: {
+          line: 22,
+          column: 45
+        }
+      },
+      '13': {
+        start: {
+          line: 23,
+          column: 4
+        },
+        end: {
+          line: 27,
+          column: 5
+        }
+      },
+      '14': {
+        start: {
+          line: 24,
+          column: 6
+        },
+        end: {
+          line: 26,
+          column: 8
+        }
+      },
+      '15': {
+        start: {
+          line: 25,
+          column: 8
+        },
+        end: {
+          line: 25,
+          column: 113
+        }
+      },
+      '16': {
+        start: {
+          line: 28,
+          column: 4
+        },
+        end: {
+          line: 30,
+          column: 5
+        }
+      },
+      '17': {
+        start: {
+          line: 29,
+          column: 6
+        },
+        end: {
+          line: 29,
+          column: 38
+        }
+      },
+      '18': {
+        start: {
+          line: 31,
+          column: 4
+        },
+        end: {
+          line: 33,
+          column: 5
+        }
+      },
+      '19': {
+        start: {
+          line: 32,
+          column: 6
+        },
+        end: {
+          line: 32,
+          column: 47
+        }
+      },
+      '20': {
+        start: {
+          line: 34,
+          column: 4
+        },
+        end: {
+          line: 34,
+          column: 86
+        }
+      },
+      '21': {
+        start: {
+          line: 39,
+          column: 4
+        },
+        end: {
+          line: 39,
+          column: 59
+        }
+      }
+    },
+    fnMap: {
+      '0': {
+        name: '(anonymous_0)',
+        decl: {
+          start: {
+            line: 24,
+            column: 68
+          },
+          end: {
+            line: 24,
+            column: 69
+          }
+        },
+        loc: {
+          start: {
+            line: 24,
+            column: 77
+          },
+          end: {
+            line: 26,
+            column: 7
+          }
+        },
+        line: 24
+      }
+    },
+    branchMap: {
+      '0': {
+        loc: {
+          start: {
+            line: 6,
+            column: 4
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        type: 'if',
+        locations: [{
+          start: {
+            line: 6,
+            column: 4
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        }, {
+          start: {
+            line: 6,
+            column: 4
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        }],
+        line: 6
+      },
+      '1': {
+        loc: {
+          start: {
+            line: 23,
+            column: 4
+          },
+          end: {
+            line: 27,
+            column: 5
+          }
+        },
+        type: 'if',
+        locations: [{
+          start: {
+            line: 23,
+            column: 4
+          },
+          end: {
+            line: 27,
+            column: 5
+          }
+        }, {
+          start: {
+            line: 23,
+            column: 4
+          },
+          end: {
+            line: 27,
+            column: 5
+          }
+        }],
+        line: 23
+      },
+      '2': {
+        loc: {
+          start: {
+            line: 23,
+            column: 7
+          },
+          end: {
+            line: 23,
+            column: 111
+          }
+        },
+        type: 'binary-expr',
+        locations: [{
+          start: {
+            line: 23,
+            column: 7
+          },
+          end: {
+            line: 23,
+            column: 37
+          }
+        }, {
+          start: {
+            line: 23,
+            column: 41
+          },
+          end: {
+            line: 23,
+            column: 73
+          }
+        }, {
+          start: {
+            line: 23,
+            column: 77
+          },
+          end: {
+            line: 23,
+            column: 111
+          }
+        }],
+        line: 23
+      },
+      '3': {
+        loc: {
+          start: {
+            line: 28,
+            column: 4
+          },
+          end: {
+            line: 30,
+            column: 5
+          }
+        },
+        type: 'if',
+        locations: [{
+          start: {
+            line: 28,
+            column: 4
+          },
+          end: {
+            line: 30,
+            column: 5
+          }
+        }, {
+          start: {
+            line: 28,
+            column: 4
+          },
+          end: {
+            line: 30,
+            column: 5
+          }
+        }],
+        line: 28
+      },
+      '4': {
+        loc: {
+          start: {
+            line: 31,
+            column: 4
+          },
+          end: {
+            line: 33,
+            column: 5
+          }
+        },
+        type: 'if',
+        locations: [{
+          start: {
+            line: 31,
+            column: 4
+          },
+          end: {
+            line: 33,
+            column: 5
+          }
+        }, {
+          start: {
+            line: 31,
+            column: 4
+          },
+          end: {
+            line: 33,
+            column: 5
+          }
+        }],
+        line: 31
+      },
+      '5': {
+        loc: {
+          start: {
+            line: 31,
+            column: 8
+          },
+          end: {
+            line: 31,
+            column: 78
+          }
+        },
+        type: 'binary-expr',
+        locations: [{
+          start: {
+            line: 31,
+            column: 8
+          },
+          end: {
+            line: 31,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 31,
+            column: 44
+          },
+          end: {
+            line: 31,
+            column: 78
+          }
+        }],
+        line: 31
+      }
+    },
+    s: {
+      '0': 0,
+      '1': 0,
+      '2': 0,
+      '3': 0,
+      '4': 0,
+      '5': 0,
+      '6': 0,
+      '7': 0,
+      '8': 0,
+      '9': 0,
+      '10': 0,
+      '11': 0,
+      '12': 0,
+      '13': 0,
+      '14': 0,
+      '15': 0,
+      '16': 0,
+      '17': 0,
+      '18': 0,
+      '19': 0,
+      '20': 0,
+      '21': 0
+    },
+    f: {
+      '0': 0
+    },
+    b: {
+      '0': [0, 0],
+      '1': [0, 0],
+      '2': [0, 0, 0],
+      '3': [0, 0],
+      '4': [0, 0],
+      '5': [0, 0]
+    },
+    _coverageSchema: '332fd63041d2c1bcb487cc26dd0d5f7d97098a6c'
+  },
+      coverage = global[gcv] || (global[gcv] = {});
+
+  if (coverage[path] && coverage[path].hash === hash) {
+    return coverage[path];
+  }
+
+  coverageData.hash = hash;
+  return coverage[path] = coverageData;
+}();
+
 var _mutationTypes = require('../mutation-types');
 
 var MutationTypes = _interopRequireWildcard(_mutationTypes);
@@ -24,7 +535,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CharacteristicActions = {
+var CharacteristicActions = (cov_h9xkk3li7.s[0]++, {
   webBluetoothDiscoverCharacteristics: function () {
     var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(_ref, query) {
       var dispatch = _ref.dispatch,
@@ -36,153 +547,168 @@ var CharacteristicActions = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              discoveredCharacteristics = [];
+              discoveredCharacteristics = (cov_h9xkk3li7.s[1]++, []);
+              cov_h9xkk3li7.s[2]++;
 
               if (!(query.characteristics === undefined)) {
-                _context.next = 34;
+                _context.next = 40;
                 break;
               }
 
-              _context.next = 4;
+              cov_h9xkk3li7.b[0][0]++;
+              cov_h9xkk3li7.s[3]++;
+              _context.next = 7;
               return query.service.getCharacteristics();
 
-            case 4:
+            case 7:
               characteristics = _context.sent;
+              cov_h9xkk3li7.s[4]++;
               _iteratorNormalCompletion = true;
               _didIteratorError = false;
               _iteratorError = undefined;
-              _context.prev = 8;
+              _context.prev = 12;
               _iterator = (0, _getIterator3.default)(characteristics);
 
-            case 10:
+            case 14:
               if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-                _context.next = 18;
+                _context.next = 24;
                 break;
               }
 
               characteristic = _step.value;
-              _context.next = 14;
+              cov_h9xkk3li7.s[5]++;
+              _context.next = 19;
               return dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
 
-            case 14:
+            case 19:
+              cov_h9xkk3li7.s[6]++;
+
               discoveredCharacteristics.push(characteristic);
 
-            case 15:
+            case 21:
               _iteratorNormalCompletion = true;
-              _context.next = 10;
+              _context.next = 14;
               break;
 
-            case 18:
-              _context.next = 24;
+            case 24:
+              _context.next = 30;
               break;
 
-            case 20:
-              _context.prev = 20;
-              _context.t0 = _context['catch'](8);
+            case 26:
+              _context.prev = 26;
+              _context.t0 = _context['catch'](12);
               _didIteratorError = true;
               _iteratorError = _context.t0;
 
-            case 24:
-              _context.prev = 24;
-              _context.prev = 25;
+            case 30:
+              _context.prev = 30;
+              _context.prev = 31;
 
               if (!_iteratorNormalCompletion && _iterator.return) {
                 _iterator.return();
               }
 
-            case 27:
-              _context.prev = 27;
+            case 33:
+              _context.prev = 33;
 
               if (!_didIteratorError) {
-                _context.next = 30;
+                _context.next = 36;
                 break;
               }
 
               throw _iteratorError;
 
-            case 30:
-              return _context.finish(27);
+            case 36:
+              return _context.finish(33);
 
-            case 31:
-              return _context.finish(24);
+            case 37:
+              return _context.finish(30);
 
-            case 32:
-              _context.next = 64;
+            case 38:
+              _context.next = 75;
               break;
 
-            case 34:
+            case 40:
+              cov_h9xkk3li7.b[0][1]++;
+              cov_h9xkk3li7.s[7]++;
               _iteratorNormalCompletion2 = true;
               _didIteratorError2 = false;
               _iteratorError2 = undefined;
-              _context.prev = 37;
+              _context.prev = 45;
               _iterator2 = (0, _getIterator3.default)(query.characteristics);
 
-            case 39:
+            case 47:
               if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                _context.next = 50;
+                _context.next = 61;
                 break;
               }
 
               characteristicUUID = _step2.value;
-              _context.next = 43;
+              cov_h9xkk3li7.s[8]++;
+              _context.next = 52;
               return query.service.getCharacteristic(characteristicUUID);
 
-            case 43:
+            case 52:
               characteristic = _context.sent;
-              _context.next = 46;
+              cov_h9xkk3li7.s[9]++;
+              _context.next = 56;
               return dispatch('webBluetoothConfigureCharacteristic', { characteristic: characteristic });
 
-            case 46:
+            case 56:
+              cov_h9xkk3li7.s[10]++;
+
               discoveredCharacteristics.push(characteristic);
 
-            case 47:
+            case 58:
               _iteratorNormalCompletion2 = true;
-              _context.next = 39;
+              _context.next = 47;
               break;
 
-            case 50:
-              _context.next = 56;
+            case 61:
+              _context.next = 67;
               break;
 
-            case 52:
-              _context.prev = 52;
-              _context.t1 = _context['catch'](37);
+            case 63:
+              _context.prev = 63;
+              _context.t1 = _context['catch'](45);
               _didIteratorError2 = true;
               _iteratorError2 = _context.t1;
 
-            case 56:
-              _context.prev = 56;
-              _context.prev = 57;
+            case 67:
+              _context.prev = 67;
+              _context.prev = 68;
 
               if (!_iteratorNormalCompletion2 && _iterator2.return) {
                 _iterator2.return();
               }
 
-            case 59:
-              _context.prev = 59;
+            case 70:
+              _context.prev = 70;
 
               if (!_didIteratorError2) {
-                _context.next = 62;
+                _context.next = 73;
                 break;
               }
 
               throw _iteratorError2;
 
-            case 62:
-              return _context.finish(59);
+            case 73:
+              return _context.finish(70);
 
-            case 63:
-              return _context.finish(56);
+            case 74:
+              return _context.finish(67);
 
-            case 64:
+            case 75:
+              cov_h9xkk3li7.s[11]++;
+
               commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, { characteristics: discoveredCharacteristics });
 
-            case 65:
+            case 77:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, this, [[8, 20, 24, 32], [25,, 27, 31], [37, 52, 56, 64], [57,, 59, 63]]);
+      }, _callee, this, [[12, 26, 30, 38], [31,, 33, 37], [45, 63, 67, 75], [68,, 70, 74]]);
     }));
 
     function webBluetoothDiscoverCharacteristics(_x, _x2) {
@@ -200,35 +726,67 @@ var CharacteristicActions = {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              characteristic = query.characteristic;
+              characteristic = (cov_h9xkk3li7.s[12]++, query.characteristic);
+              cov_h9xkk3li7.s[13]++;
 
-              if (characteristic.properties.read || characteristic.properties.notify || characteristic.properties.indicate) {
+              if ((cov_h9xkk3li7.b[2][0]++, characteristic.properties.read) || (cov_h9xkk3li7.b[2][1]++, characteristic.properties.notify) || (cov_h9xkk3li7.b[2][2]++, characteristic.properties.indicate)) {
+                cov_h9xkk3li7.b[1][0]++;
+                cov_h9xkk3li7.s[14]++;
+
                 characteristic.addEventListener('characteristicvaluechanged', function (event) {
+                  cov_h9xkk3li7.f[0]++;
+                  cov_h9xkk3li7.s[15]++;
+
                   dispatch('webBluetoothUpdateCharacteristic', { characteristic: characteristic, value: event.target.value });
                 });
+              } else {
+                cov_h9xkk3li7.b[1][1]++;
               }
+              cov_h9xkk3li7.s[16]++;
 
               if (!characteristic.properties.read) {
-                _context2.next = 5;
+                _context2.next = 11;
                 break;
               }
 
-              _context2.next = 5;
+              cov_h9xkk3li7.b[3][0]++;
+              cov_h9xkk3li7.s[17]++;
+              _context2.next = 9;
               return characteristic.readValue();
 
-            case 5:
-              if (!(characteristic.properties.notify || characteristic.properties.indicate)) {
-                _context2.next = 8;
+            case 9:
+              _context2.next = 12;
+              break;
+
+            case 11:
+              cov_h9xkk3li7.b[3][1]++;
+
+            case 12:
+              cov_h9xkk3li7.s[18]++;
+
+              if (!((cov_h9xkk3li7.b[5][0]++, characteristic.properties.notify) || (cov_h9xkk3li7.b[5][1]++, characteristic.properties.indicate))) {
+                _context2.next = 20;
                 break;
               }
 
-              _context2.next = 8;
+              cov_h9xkk3li7.b[4][0]++;
+              cov_h9xkk3li7.s[19]++;
+              _context2.next = 18;
               return characteristic.startNotifications();
 
-            case 8:
+            case 18:
+              _context2.next = 21;
+              break;
+
+            case 20:
+              cov_h9xkk3li7.b[4][1]++;
+
+            case 21:
+              cov_h9xkk3li7.s[20]++;
+
               commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, { characteristic: characteristic });
 
-            case 9:
+            case 23:
             case 'end':
               return _context2.stop();
           }
@@ -271,9 +829,11 @@ var CharacteristicActions = {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
+              cov_h9xkk3li7.s[21]++;
+
               commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query);
 
-            case 1:
+            case 2:
             case 'end':
               return _context4.stop();
           }
@@ -287,7 +847,7 @@ var CharacteristicActions = {
 
     return webBluetoothUpdateCharacteristic;
   }()
-};
+});
 
 exports.default = CharacteristicActions;
 //# sourceMappingURL=characteristic.js.map

@@ -29,7 +29,7 @@ const DeviceActions = {
     }
     // Does the query specify a collection of optional services to look for
     if (query.optionalServices !== undefined) {
-      requestParameters['optionalServices'] = query.optionalServices.map(service => service.uuid)
+      requestParameters['optionalServices'] = query.optionalServices
     }
     // Perform Query
     let device = await navigator.bluetooth.requestDevice(requestParameters)
@@ -41,7 +41,7 @@ const DeviceActions = {
   async webBluetoothWatchAdvertisments ({ dispatch, commit }, query) {
     if (query.device.gatt.connected) {
       //Add listener for RSSI
-      query.device.GattAdvertismentCallback = function (event) {
+      query.device.GattAdvertismentCallback = (event) => {
         dispatch('webBluetoothDeviceAdvertisment', {advertisment: event})
       }
       query.device.addEventListener('advertisementreceived', query.device.GattAdvertismentCallback)
@@ -62,8 +62,10 @@ const DeviceActions = {
   async webBluetoothConnectDevice ({ dispatch, commit }, payload) {
     if (!payload.device.gatt.connected) {
       await payload.device.gatt.connect()
-      payload.device.GattDisconnectionCallback = function(event) {
-        dispatch('webBluetoothDisconnectDevice', {device: event.currentTarget})
+      payload.device.GattDisconnectionCallback = (event) => {
+        payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
+        payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback)
+        dispatch('webBluetoothRemoveDevice', {device: event.currentTarget})
       }
       payload.device.addEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
       commit(mutationTypes.BLE_DEVICE_UPDATED, {device: payload.device})

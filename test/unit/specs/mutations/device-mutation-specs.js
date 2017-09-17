@@ -29,7 +29,7 @@ describe("DeviceMutations", function() {
     })
   })
 
-  describe.only('#DEVICE_REMOVED', function() {
+  describe('#DEVICE_REMOVED', function() {
     it('changed state', function () {
       this.state.devices.push(this.device)
       let payload = {device: this.device}

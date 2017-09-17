@@ -39,7 +39,6 @@ describe("Device actions", function () {
           expect(receivedArguments.filters).to.deep.include({name: 'DeviceName'})
           done()
         } catch(error) {
-          console.info(error)
           done(error)
         }
       }
@@ -94,6 +93,31 @@ describe("Device actions", function () {
       var test = new VuexActionTester(DeviceActions.webBluetoothAddDevice, payload, [],[], doneFunc)
       test.run()
     })
+    it('handles {optionalServices: [\'heart_rate\',\'c48e6067-5295-48d3-8d5c-0395f61792b1\',0x1802]}', function (done) {
+      var mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(undefined);
+      var payload = {optionalServices: ['heart_rate','c48e6067-5295-48d3-8d5c-0395f61792b1',0x1802]}
+      var doneFunc = function(err) {
+        if (err) {
+          done(err)
+          return
+        }
+        let expectedCallArguments = mock.getCalls()[0]
+        let receivedArguments = expectedCallArguments.args[0]
+        let error = undefined
+        try {
+          expect(mock.callCount).to.equal(1)
+          expect(receivedArguments.acceptAllDevices).to.not.be.undefined
+          expect(receivedArguments.optionalServices).to.include('heart_rate')
+          expect(receivedArguments.optionalServices).to.include('c48e6067-5295-48d3-8d5c-0395f61792b1')
+          expect(receivedArguments.optionalServices).to.include(0x1802)
+          done()
+        } catch(error) {
+          done(error)
+        }
+      }
+      var test = new VuexActionTester(DeviceActions.webBluetoothAddDevice, payload, [],[], doneFunc)
+      test.run()
+    })
     it('adds device', function (done) {
       let mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(this.device);
       let payload = {}
@@ -122,6 +146,29 @@ describe("Device actions", function () {
         }
       ]
       var test = new VuexActionTester(DeviceActions.webBluetoothRemoveDevice, payload, mutations,[],done)
+      test.run()
+    })
+    it('removes connection listeners', function (done) {
+      this.device.gatt.connected = true
+      let payload = {device: this.device}
+      let removeEventListenerSpy = this.sandbox.spy(this.device,'removeEventListener')
+      let verifyResults = function(err) {
+        if (err) {
+          done(err)
+          return
+        }
+        expect(removeEventListenerSpy.callCount).to.equal(2)
+        done()
+      }
+      let mutations = [
+        {
+          type: MutationTypes.BLE_DEVICE_REMOVED,
+          validation: (payload) => {
+            expect(payload.device).to.deep.equal(this.device)
+          }
+        }
+      ]
+      var test = new VuexActionTester(DeviceActions.webBluetoothRemoveDevice, payload, mutations,[],verifyResults)
       test.run()
     })
   })
