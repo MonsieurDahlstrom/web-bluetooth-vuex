@@ -14,7 +14,7 @@ var _getIterator3 = _interopRequireDefault(_getIterator2);
 
 var cov_1a0q1in91j = function () {
   var path = '/Users/mdahlstrom/Documents/GitHub/web-bluetooth-vuex-module/src/mutations/characteristic.js',
-      hash = '5e19525342c53ed2da84181beee4c1d667f0afb9',
+      hash = 'aeac1b47e70f001e33a3ef585818fdcb85f34e65',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
@@ -47,7 +47,7 @@ var cov_1a0q1in91j = function () {
         },
         end: {
           line: 8,
-          column: 77
+          column: 80
         }
       },
       '3': {
@@ -67,7 +67,7 @@ var cov_1a0q1in91j = function () {
         },
         end: {
           line: 10,
-          column: 50
+          column: 53
         }
       },
       '5': {
@@ -77,7 +77,7 @@ var cov_1a0q1in91j = function () {
         },
         end: {
           line: 12,
-          column: 74
+          column: 77
         }
       },
       '6': {
@@ -87,7 +87,7 @@ var cov_1a0q1in91j = function () {
         },
         end: {
           line: 18,
-          column: 83
+          column: 75
         }
       },
       '7': {
@@ -107,7 +107,7 @@ var cov_1a0q1in91j = function () {
         },
         end: {
           line: 20,
-          column: 56
+          column: 48
         }
       },
       '9': {
@@ -117,7 +117,7 @@ var cov_1a0q1in91j = function () {
         },
         end: {
           line: 22,
-          column: 80
+          column: 72
         }
       }
     },
@@ -233,28 +233,28 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CharacteristicMutatations = (cov_1a0q1in91j.s[0]++, (_ref = {}, (0, _defineProperty3.default)(_ref, MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, function (state, payload) {
+var CharacteristicMutatations = (cov_1a0q1in91j.s[0]++, (_ref = {}, (0, _defineProperty3.default)(_ref, MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, function (state, characteristics) {
   cov_1a0q1in91j.s[1]++;
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
 
   try {
-    for (var _iterator = (0, _getIterator3.default)(payload.characteristics), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var characteristic = _step.value;
+    for (var _iterator = (0, _getIterator3.default)(characteristics), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var newCharacteristic = _step.value;
 
-      var characteristicIndex = (cov_1a0q1in91j.s[2]++, state.characteristics.indexOf(characteristic));
+      var characteristicIndex = (cov_1a0q1in91j.s[2]++, state.characteristics.indexOf(newCharacteristic));
       cov_1a0q1in91j.s[3]++;
       if (characteristicIndex < 0) {
         cov_1a0q1in91j.b[0][0]++;
         cov_1a0q1in91j.s[4]++;
 
-        state.characteristics.push(characteristic);
+        state.characteristics.push(newCharacteristic);
       } else {
         cov_1a0q1in91j.b[0][1]++;
         cov_1a0q1in91j.s[5]++;
 
-        state.characteristics.splice(characteristicIndex, 1, characteristic);
+        state.characteristics.splice(characteristicIndex, 1, newCharacteristic);
       }
     }
   } catch (err) {
@@ -271,19 +271,19 @@ var CharacteristicMutatations = (cov_1a0q1in91j.s[0]++, (_ref = {}, (0, _defineP
       }
     }
   }
-}), (0, _defineProperty3.default)(_ref, MutationTypes.BLE_CHARACTERISTIC_CHANGED, function (state, payload) {
-  var characteristicIndex = (cov_1a0q1in91j.s[6]++, state.characteristics.indexOf(payload.characteristic));
+}), (0, _defineProperty3.default)(_ref, MutationTypes.BLE_CHARACTERISTIC_CHANGED, function (state, characteristic) {
+  var characteristicIndex = (cov_1a0q1in91j.s[6]++, state.characteristics.indexOf(characteristic));
   cov_1a0q1in91j.s[7]++;
   if (characteristicIndex < 0) {
     cov_1a0q1in91j.b[1][0]++;
     cov_1a0q1in91j.s[8]++;
 
-    state.characteristics.push(payload.characteristic);
+    state.characteristics.push(characteristic);
   } else {
     cov_1a0q1in91j.b[1][1]++;
     cov_1a0q1in91j.s[9]++;
 
-    state.characteristics.splice(characteristicIndex, 1, payload.characteristic);
+    state.characteristics.splice(characteristicIndex, 1, characteristic);
   }
 }), _ref));
 

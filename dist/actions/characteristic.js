@@ -18,7 +18,7 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var cov_h9xkk3li7 = function () {
   var path = '/Users/mdahlstrom/Documents/GitHub/web-bluetooth-vuex-module/src/actions/characteristic.js',
-      hash = '607724bcfaa6a3f093dd94c2691896cfd3c77ef7',
+      hash = '39a59a6d1e5b56fad4c80174ac9f12fb455f3a26',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
@@ -30,7 +30,7 @@ var cov_h9xkk3li7 = function () {
           column: 30
         },
         end: {
-          line: 41,
+          line: 48,
           column: 1
         }
       },
@@ -141,7 +141,7 @@ var cov_h9xkk3li7 = function () {
         },
         end: {
           line: 19,
-          column: 102
+          column: 82
         }
       },
       '12': {
@@ -181,7 +181,7 @@ var cov_h9xkk3li7 = function () {
         },
         end: {
           line: 25,
-          column: 113
+          column: 92
         }
       },
       '16': {
@@ -231,17 +231,57 @@ var cov_h9xkk3li7 = function () {
         },
         end: {
           line: 34,
-          column: 86
+          column: 68
         }
       },
       '21': {
         start: {
-          line: 39,
+          line: 37,
           column: 4
         },
         end: {
-          line: 39,
-          column: 59
+          line: 43,
+          column: 5
+        }
+      },
+      '22': {
+        start: {
+          line: 38,
+          column: 6
+        },
+        end: {
+          line: 38,
+          column: 56
+        }
+      },
+      '23': {
+        start: {
+          line: 40,
+          column: 6
+        },
+        end: {
+          line: 40,
+          column: 22
+        }
+      },
+      '24': {
+        start: {
+          line: 42,
+          column: 6
+        },
+        end: {
+          line: 42,
+          column: 76
+        }
+      },
+      '25': {
+        start: {
+          line: 46,
+          column: 4
+        },
+        end: {
+          line: 46,
+          column: 74
         }
       }
     },
@@ -502,7 +542,11 @@ var cov_h9xkk3li7 = function () {
       '18': 0,
       '19': 0,
       '20': 0,
-      '21': 0
+      '21': 0,
+      '22': 0,
+      '23': 0,
+      '24': 0,
+      '25': 0
     },
     f: {
       '0': 0
@@ -701,7 +745,7 @@ var CharacteristicActions = (cov_h9xkk3li7.s[0]++, {
             case 75:
               cov_h9xkk3li7.s[11]++;
 
-              commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, { characteristics: discoveredCharacteristics });
+              commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, discoveredCharacteristics);
 
             case 77:
             case 'end':
@@ -737,7 +781,7 @@ var CharacteristicActions = (cov_h9xkk3li7.s[0]++, {
                   cov_h9xkk3li7.f[0]++;
                   cov_h9xkk3li7.s[15]++;
 
-                  dispatch('webBluetoothUpdateCharacteristic', { characteristic: characteristic, value: event.target.value });
+                  dispatch('webBluetoothUpdateCharacteristic', { characteristic: query.characteristic });
                 });
               } else {
                 cov_h9xkk3li7.b[1][1]++;
@@ -784,7 +828,7 @@ var CharacteristicActions = (cov_h9xkk3li7.s[0]++, {
             case 21:
               cov_h9xkk3li7.s[20]++;
 
-              commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, { characteristic: characteristic });
+              commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, characteristic);
 
             case 23:
             case 'end':
@@ -808,11 +852,36 @@ var CharacteristicActions = (cov_h9xkk3li7.s[0]++, {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
+              cov_h9xkk3li7.s[21]++;
+              _context3.prev = 1;
+              cov_h9xkk3li7.s[22]++;
+              _context3.next = 5;
+              return query.characteristic.writeValue(query.value);
+
+            case 5:
+              _context3.next = 11;
+              break;
+
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3['catch'](1);
+              cov_h9xkk3li7.s[23]++;
+
+              console.error(_context3.t0);
+
+            case 11:
+              _context3.prev = 11;
+              cov_h9xkk3li7.s[24]++;
+
+              commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query.characteristic);
+              return _context3.finish(11);
+
+            case 15:
             case 'end':
               return _context3.stop();
           }
         }
-      }, _callee3, this);
+      }, _callee3, this, [[1, 7, 11, 15]]);
     }));
 
     function webBluetoothWriteCharacteristic(_x5, _x6) {
@@ -829,9 +898,9 @@ var CharacteristicActions = (cov_h9xkk3li7.s[0]++, {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              cov_h9xkk3li7.s[21]++;
+              cov_h9xkk3li7.s[25]++;
 
-              commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query);
+              commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query.characteristic);
 
             case 2:
             case 'end':

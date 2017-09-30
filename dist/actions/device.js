@@ -14,7 +14,7 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var cov_2ktu83stkp = function () {
   var path = '/Users/mdahlstrom/Documents/GitHub/web-bluetooth-vuex-module/src/actions/device.js',
-      hash = '6f125ce5bccb1dbfd4980f833926441525830097',
+      hash = 'ffabb131e80655e05a82afadcc5a51d150f078f9',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
@@ -157,20 +157,10 @@ var cov_2ktu83stkp = function () {
         },
         end: {
           line: 32,
-          column: 97
+          column: 68
         }
       },
       '14': {
-        start: {
-          line: 32,
-          column: 84
-        },
-        end: {
-          line: 32,
-          column: 96
-        }
-      },
-      '15': {
         start: {
           line: 35,
           column: 17
@@ -180,7 +170,7 @@ var cov_2ktu83stkp = function () {
           column: 75
         }
       },
-      '16': {
+      '15': {
         start: {
           line: 36,
           column: 4
@@ -190,7 +180,7 @@ var cov_2ktu83stkp = function () {
           column: 5
         }
       },
-      '17': {
+      '16': {
         start: {
           line: 37,
           column: 6
@@ -200,7 +190,7 @@ var cov_2ktu83stkp = function () {
           column: 62
         }
       },
-      '18': {
+      '17': {
         start: {
           line: 42,
           column: 4
@@ -210,7 +200,7 @@ var cov_2ktu83stkp = function () {
           column: 5
         }
       },
-      '19': {
+      '18': {
         start: {
           line: 44,
           column: 6
@@ -220,7 +210,7 @@ var cov_2ktu83stkp = function () {
           column: 7
         }
       },
-      '20': {
+      '19': {
         start: {
           line: 45,
           column: 8
@@ -230,7 +220,7 @@ var cov_2ktu83stkp = function () {
           column: 73
         }
       },
-      '21': {
+      '20': {
         start: {
           line: 47,
           column: 6
@@ -240,7 +230,7 @@ var cov_2ktu83stkp = function () {
           column: 99
         }
       },
-      '22': {
+      '21': {
         start: {
           line: 48,
           column: 6
@@ -250,7 +240,7 @@ var cov_2ktu83stkp = function () {
           column: 46
         }
       },
-      '23': {
+      '22': {
         start: {
           line: 49,
           column: 6
@@ -260,7 +250,7 @@ var cov_2ktu83stkp = function () {
           column: 70
         }
       },
-      '24': {
+      '23': {
         start: {
           line: 54,
           column: 4
@@ -270,7 +260,7 @@ var cov_2ktu83stkp = function () {
           column: 5
         }
       },
-      '25': {
+      '24': {
         start: {
           line: 55,
           column: 6
@@ -280,7 +270,7 @@ var cov_2ktu83stkp = function () {
           column: 104
         }
       },
-      '26': {
+      '25': {
         start: {
           line: 56,
           column: 6
@@ -290,7 +280,7 @@ var cov_2ktu83stkp = function () {
           column: 102
         }
       },
-      '27': {
+      '26': {
         start: {
           line: 57,
           column: 6
@@ -300,7 +290,7 @@ var cov_2ktu83stkp = function () {
           column: 42
         }
       },
-      '28': {
+      '27': {
         start: {
           line: 59,
           column: 4
@@ -310,7 +300,7 @@ var cov_2ktu83stkp = function () {
           column: 68
         }
       },
-      '29': {
+      '28': {
         start: {
           line: 63,
           column: 4
@@ -320,7 +310,7 @@ var cov_2ktu83stkp = function () {
           column: 5
         }
       },
-      '30': {
+      '29': {
         start: {
           line: 64,
           column: 6
@@ -330,7 +320,7 @@ var cov_2ktu83stkp = function () {
           column: 41
         }
       },
-      '31': {
+      '30': {
         start: {
           line: 65,
           column: 6
@@ -340,7 +330,7 @@ var cov_2ktu83stkp = function () {
           column: 7
         }
       },
-      '32': {
+      '31': {
         start: {
           line: 66,
           column: 8
@@ -350,7 +340,7 @@ var cov_2ktu83stkp = function () {
           column: 110
         }
       },
-      '33': {
+      '32': {
         start: {
           line: 67,
           column: 8
@@ -360,7 +350,7 @@ var cov_2ktu83stkp = function () {
           column: 108
         }
       },
-      '34': {
+      '33': {
         start: {
           line: 68,
           column: 8
@@ -370,7 +360,7 @@ var cov_2ktu83stkp = function () {
           column: 75
         }
       },
-      '35': {
+      '34': {
         start: {
           line: 70,
           column: 6
@@ -380,7 +370,7 @@ var cov_2ktu83stkp = function () {
           column: 105
         }
       },
-      '36': {
+      '35': {
         start: {
           line: 71,
           column: 6
@@ -390,7 +380,7 @@ var cov_2ktu83stkp = function () {
           column: 72
         }
       },
-      '37': {
+      '36': {
         start: {
           line: 76,
           column: 4
@@ -400,7 +390,7 @@ var cov_2ktu83stkp = function () {
           column: 5
         }
       },
-      '38': {
+      '37': {
         start: {
           line: 77,
           column: 6
@@ -410,7 +400,7 @@ var cov_2ktu83stkp = function () {
           column: 108
         }
       },
-      '39': {
+      '38': {
         start: {
           line: 78,
           column: 6
@@ -420,7 +410,7 @@ var cov_2ktu83stkp = function () {
           column: 106
         }
       },
-      '40': {
+      '39': {
         start: {
           line: 79,
           column: 6
@@ -430,7 +420,7 @@ var cov_2ktu83stkp = function () {
           column: 44
         }
       },
-      '41': {
+      '40': {
         start: {
           line: 80,
           column: 6
@@ -444,30 +434,6 @@ var cov_2ktu83stkp = function () {
     fnMap: {
       '0': {
         name: '(anonymous_0)',
-        decl: {
-          start: {
-            line: 32,
-            column: 73
-          },
-          end: {
-            line: 32,
-            column: 74
-          }
-        },
-        loc: {
-          start: {
-            line: 32,
-            column: 84
-          },
-          end: {
-            line: 32,
-            column: 96
-          }
-        },
-        line: 32
-      },
-      '1': {
-        name: '(anonymous_1)',
         decl: {
           start: {
             line: 44,
@@ -490,8 +456,8 @@ var cov_2ktu83stkp = function () {
         },
         line: 44
       },
-      '2': {
-        name: '(anonymous_2)',
+      '1': {
+        name: '(anonymous_1)',
         decl: {
           start: {
             line: 65,
@@ -888,13 +854,11 @@ var cov_2ktu83stkp = function () {
       '37': 0,
       '38': 0,
       '39': 0,
-      '40': 0,
-      '41': 0
+      '40': 0
     },
     f: {
       '0': 0,
-      '1': 0,
-      '2': 0
+      '1': 0
     },
     b: {
       '0': [0, 0],
@@ -981,25 +945,21 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
                 cov_2ktu83stkp.b[4][0]++;
                 cov_2ktu83stkp.s[13]++;
 
-                requestParameters['optionalServices'] = query.optionalServices.map(function (service) {
-                  cov_2ktu83stkp.f[0]++;
-                  cov_2ktu83stkp.s[14]++;
-                  return service.uuid;
-                });
+                requestParameters['optionalServices'] = query.optionalServices;
               } else {
                 cov_2ktu83stkp.b[4][1]++;
               }
-              cov_2ktu83stkp.s[15]++;
+              cov_2ktu83stkp.s[14]++;
               _context.next = 8;
               return navigator.bluetooth.requestDevice(requestParameters);
 
             case 8:
               device = _context.sent;
-              cov_2ktu83stkp.s[16]++;
+              cov_2ktu83stkp.s[15]++;
 
               if (device) {
                 cov_2ktu83stkp.b[5][0]++;
-                cov_2ktu83stkp.s[17]++;
+                cov_2ktu83stkp.s[16]++;
 
                 commit(mutationTypes.BLE_DEVICE_ADDED, { device: device });
               } else {
@@ -1028,7 +988,7 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              cov_2ktu83stkp.s[18]++;
+              cov_2ktu83stkp.s[17]++;
 
               if (!query.device.gatt.connected) {
                 _context2.next = 14;
@@ -1036,22 +996,22 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
               }
 
               cov_2ktu83stkp.b[6][0]++;
-              cov_2ktu83stkp.s[19]++;
+              cov_2ktu83stkp.s[18]++;
 
               query.device.GattAdvertismentCallback = function (event) {
-                cov_2ktu83stkp.f[1]++;
-                cov_2ktu83stkp.s[20]++;
+                cov_2ktu83stkp.f[0]++;
+                cov_2ktu83stkp.s[19]++;
 
                 dispatch('webBluetoothDeviceAdvertisment', { advertisment: event });
               };
-              cov_2ktu83stkp.s[21]++;
+              cov_2ktu83stkp.s[20]++;
               query.device.addEventListener('advertisementreceived', query.device.GattAdvertismentCallback);
-              cov_2ktu83stkp.s[22]++;
+              cov_2ktu83stkp.s[21]++;
               _context2.next = 10;
               return query.device.watchAdvertisements();
 
             case 10:
-              cov_2ktu83stkp.s[23]++;
+              cov_2ktu83stkp.s[22]++;
 
               commit(mutationTypes.BLE_DEVICE_UPDATED, { device: query.device });
               _context2.next = 15;
@@ -1082,7 +1042,7 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              cov_2ktu83stkp.s[24]++;
+              cov_2ktu83stkp.s[23]++;
 
               if (!query.device.gatt.connected) {
                 _context3.next = 12;
@@ -1090,12 +1050,12 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
               }
 
               cov_2ktu83stkp.b[7][0]++;
-              cov_2ktu83stkp.s[25]++;
+              cov_2ktu83stkp.s[24]++;
 
               query.device.removeEventListener('gattserverdisconnected', query.device.GattDisconnectionCallback);
-              cov_2ktu83stkp.s[26]++;
+              cov_2ktu83stkp.s[25]++;
               query.device.removeEventListener('advertisementreceived', query.device.GattAdvertismentCallback);
-              cov_2ktu83stkp.s[27]++;
+              cov_2ktu83stkp.s[26]++;
               _context3.next = 10;
               return query.device.gatt.disconnect();
 
@@ -1107,7 +1067,7 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
               cov_2ktu83stkp.b[7][1]++;
 
             case 13:
-              cov_2ktu83stkp.s[28]++;
+              cov_2ktu83stkp.s[27]++;
 
               commit(mutationTypes.BLE_DEVICE_REMOVED, { device: query.device });
 
@@ -1133,7 +1093,7 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              cov_2ktu83stkp.s[29]++;
+              cov_2ktu83stkp.s[28]++;
 
               if (payload.device.gatt.connected) {
                 _context4.next = 14;
@@ -1141,26 +1101,26 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
               }
 
               cov_2ktu83stkp.b[8][0]++;
-              cov_2ktu83stkp.s[30]++;
+              cov_2ktu83stkp.s[29]++;
               _context4.next = 6;
               return payload.device.gatt.connect();
 
             case 6:
-              cov_2ktu83stkp.s[31]++;
+              cov_2ktu83stkp.s[30]++;
 
               payload.device.GattDisconnectionCallback = function (event) {
-                cov_2ktu83stkp.f[2]++;
-                cov_2ktu83stkp.s[32]++;
+                cov_2ktu83stkp.f[1]++;
+                cov_2ktu83stkp.s[31]++;
 
                 payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-                cov_2ktu83stkp.s[33]++;
+                cov_2ktu83stkp.s[32]++;
                 payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
-                cov_2ktu83stkp.s[34]++;
+                cov_2ktu83stkp.s[33]++;
                 dispatch('webBluetoothRemoveDevice', { device: event.currentTarget });
               };
-              cov_2ktu83stkp.s[35]++;
+              cov_2ktu83stkp.s[34]++;
               payload.device.addEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-              cov_2ktu83stkp.s[36]++;
+              cov_2ktu83stkp.s[35]++;
               commit(mutationTypes.BLE_DEVICE_UPDATED, { device: payload.device });
               _context4.next = 15;
               break;
@@ -1190,7 +1150,7 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              cov_2ktu83stkp.s[37]++;
+              cov_2ktu83stkp.s[36]++;
 
               if (!payload.device.gatt.connected) {
                 _context5.next = 14;
@@ -1198,17 +1158,17 @@ var DeviceActions = (cov_2ktu83stkp.s[0]++, {
               }
 
               cov_2ktu83stkp.b[9][0]++;
-              cov_2ktu83stkp.s[38]++;
+              cov_2ktu83stkp.s[37]++;
 
               payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback);
-              cov_2ktu83stkp.s[39]++;
+              cov_2ktu83stkp.s[38]++;
               payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback);
-              cov_2ktu83stkp.s[40]++;
+              cov_2ktu83stkp.s[39]++;
               _context5.next = 10;
               return payload.device.gatt.disconnect();
 
             case 10:
-              cov_2ktu83stkp.s[41]++;
+              cov_2ktu83stkp.s[40]++;
 
               commit(mutationTypes.BLE_DEVICE_UPDATED, { device: payload.device });
               _context5.next = 15;

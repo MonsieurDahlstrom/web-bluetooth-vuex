@@ -3,23 +3,23 @@ import * as MutationTypes from '../mutation-types'
 
 const CharacteristicMutatations = {
 
-  [MutationTypes.BLE_CHARACTERISTICS_DISCOVERED] (state, payload) {
-    for (var characteristic of payload.characteristics) {
-      var characteristicIndex = state.characteristics.indexOf(characteristic)
+  [MutationTypes.BLE_CHARACTERISTICS_DISCOVERED] (state, characteristics) {
+    for (var newCharacteristic of characteristics) {
+      var characteristicIndex = state.characteristics.indexOf(newCharacteristic)
       if (characteristicIndex < 0) {
-        state.characteristics.push(characteristic)
+        state.characteristics.push(newCharacteristic)
       } else {
-        state.characteristics.splice(characteristicIndex,1,characteristic)
+        state.characteristics.splice(characteristicIndex,1,newCharacteristic)
       }
     }
   },
 
-  [MutationTypes.BLE_CHARACTERISTIC_CHANGED] (state, payload) {
-    var characteristicIndex = state.characteristics.indexOf(payload.characteristic)
+  [MutationTypes.BLE_CHARACTERISTIC_CHANGED] (state, characteristic) {
+    var characteristicIndex = state.characteristics.indexOf(characteristic)
     if (characteristicIndex < 0) {
-      state.characteristics.push(payload.characteristic)
+      state.characteristics.push(characteristic)
     } else {
-      state.characteristics.splice(characteristicIndex,1,payload.characteristic)
+      state.characteristics.splice(characteristicIndex,1,characteristic)
     }
   }
 

@@ -16,13 +16,13 @@ const CharacteristicActions = {
         discoveredCharacteristics.push(characteristic)
       }
     }
-    commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED, {characteristics: discoveredCharacteristics})
+    commit(MutationTypes.BLE_CHARACTERISTICS_DISCOVERED,discoveredCharacteristics)
   },
   async webBluetoothConfigureCharacteristic({ dispatch, commit }, query) {
     let characteristic = query.characteristic
     if(characteristic.properties.read || characteristic.properties.notify || characteristic.properties.indicate) {
       characteristic.addEventListener('characteristicvaluechanged', event => {
-        dispatch('webBluetoothUpdateCharacteristic', {characteristic: characteristic, value: event.target.value})
+        dispatch('webBluetoothUpdateCharacteristic', {characteristic: query.characteristic})
       })
     }
     if (characteristic.properties.read) {
@@ -31,13 +31,20 @@ const CharacteristicActions = {
     if (characteristic.properties.notify || characteristic.properties.indicate) {
       await characteristic.startNotifications()
     }
-    commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, {characteristic: characteristic})
+    commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, characteristic)
   },
   async webBluetoothWriteCharacteristic({ dispatch, commit }, query) {
+    try {
+      await query.characteristic.writeValue(query.value)
+    } catch (e) {
+      console.error(e)
+    } finally {
+      commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query.characteristic)
+    }
   },
   async webBluetoothUpdateCharacteristic({ dispatch, commit }, query) {
-    commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query)
-  },
+    commit(MutationTypes.BLE_CHARACTERISTIC_CHANGED, query.characteristic)
+  }
 }
 
 export default CharacteristicActions
