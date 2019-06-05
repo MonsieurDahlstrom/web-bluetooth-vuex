@@ -1,24 +1,19 @@
-import WebBluetoothStoreUtils from './web-bluetooth-store-utils'
-
 const getters = {
-  webBluetoothDevices: (state, getters) =>  {
-    return state.devices
+  device: (state, getters) => (deviceID) => {
+    return state.devices.find(device => device.id === deviceID)
   },
-  webBluetoothDevice: (state, getters) => (deviceAddress) => {
-    return state.devices.find(device => device.id === deviceAddress)
-  },
-  webBluetoothServicesForDevice: (state, getters) => (device) => {
+  servicesForDevice: (state, getters) => (deviceID) => {
     return state.services.filter((service) => {
-      return service.device === device
+      return service.device.id === deviceID
     })
   },
-  webBluetoothServiceForDevice: (state, getters) => (device, uuid) => {
-    return state.services.find((service) => service.device === device && service.uuid === uuid)
+  serviceForDevice: (state, getters) => (deviceID, uuid) => {
+    return state.services.find((service) => service.device.id === deviceID && service.uuid === uuid)
   },
-  webBluetoothCharacteristicsForService: (state, getters) => (service) => {
+  characteristicsForService: (state, getters) => (service) => {
     return state.characteristics.filter((characteristic) => characteristic.service === service)
   },
-  webBluetoothCharacteristicForService: (state, getters) => (service, uuid) => {
+  characteristicForService: (state, getters) => (service, uuid) => {
     return state.characteristics.find((characteristic) => characteristic.service === service && characteristic.uuid === uuid)
   }
 }

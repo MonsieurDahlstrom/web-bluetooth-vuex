@@ -2,35 +2,23 @@ import * as MutationTypes from '../mutation-types'
 
 const ServiceActions = {
 
-  async webBluetoothDiscoverServices ({ dispatch, commit }, query) {
-    let discoveredServices = []
-    var services = await query.device.gatt.getPrimaryServices()
-    for (var service of services) {
-      dispatch('webBluetoothDiscoverCharacteristics',{service: service})
+  async discoverServices ({ dispatch, commit, getters}, query) {
+    if (query.uuid) {
+      const service = await query.device.gatt.getPrimaryService(query.uuid);
+      if (!service) return
+      dispatch('discoverCharacteristics',{service: service})
       commit(MutationTypes.BLE_SERVICE_ADDED, service)
+    } else {
+      const services = await query.device.gatt.getPrimaryServices()
+      for (const service of services) {
+        dispatch('discoverCharacteristics',{service: service})
+        commit(MutationTypes.BLE_SERVICE_ADDED, service)
+      }
     }
   },
 
-  async webBluetoothDiscoverService ({ dispatch, commit }, query) {
-    let service = await query.device.gatt.getPrimaryService(query.uuid)
+  async removeService ({ dispatch, commit }, service) {
     if (service) {
-      dispatch('webBluetoothDiscoverCharacteristics',{service: service})
-      commit(MutationTypes.BLE_SERVICE_ADDED, service)
-    }
-  },
-
-  async webBluetoothRemoveService ({ dispatch, commit }, service) {
-    if (service) {
-      if (service.GattServiceAddedCallback) {
-
-      }
-      if (service.GattServiceChangedCallback) {
-
-      }
-      if (service.GattServiceRemovedCallback) {
-
-      }
-      dispatch('webBluetoothRemoveCharacteristics',{service: service})
       commit(MutationTypes.BLE_SERVICE_REMOVED, service)
     }
   }

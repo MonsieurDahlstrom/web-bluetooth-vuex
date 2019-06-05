@@ -6,26 +6,29 @@ import DeviceMutatations from './mutations/device'
 import ServiceMutations from './mutations/service'
 import CharacteristicMutations from './mutations/characteristic'
 //
-import getters from './getters.js'
-import WebBluetoothStoreUtils from './web-bluetooth-store-utils.js'
+import Getters from './getters.js'
+import VueBluetoothLEMixin from './web-bluetooth-store-utils.js'
 
-const state = {
+
+
+
+const WebBluetoothState = {
   devices: [],
   services: [],
   characteristics: []
 }
 
-const actions = Object.assign({}, DeviceActions, ServiceActions, CharacteristicActions)
+const Actions = Object.assign({}, DeviceActions, ServiceActions, CharacteristicActions)
 
-const mutations = Object.assign({}, DeviceMutatations, ServiceMutations, CharacteristicMutations)
+const Mutations = Object.assign({}, DeviceMutatations, ServiceMutations, CharacteristicMutations)
 
-const VuexBluetoothLEModule = {
-  state,
-  getters,
-  actions,
-  mutations
+const VuexModule = {
+  state: WebBluetoothState,
+  mutations: Mutations,
+  actions: Actions,
+  getters: Getters,
+  namespaced: true
 }
 
-module.exports.VueBluetoothLEMixin = WebBluetoothStoreUtils
-module.exports.VuexBluetoothLEModule = VuexBluetoothLEModule
-export default VuexBluetoothLEModule
+export { VueBluetoothLEMixin as VueBluetoothLEMixin, VuexModule as VuexBluetoothLEModule }
+export default VuexModule

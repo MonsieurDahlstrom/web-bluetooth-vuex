@@ -1,6 +1,1 @@
-{
-  "presets": [ ["env", { "targets": { "uglify": false } }] ],
-  "plugins": ["istanbul", "transform-regenerator","transform-runtime"],
-  "comments": false,
-  "sourceMaps": true
-}
+{"presets":["@babel/preset-env"]}
