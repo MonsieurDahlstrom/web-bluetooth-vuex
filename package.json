@@ -9,7 +9,7 @@
     "test": "yarn run lint && yarn run test:unit",
     "lint": "eslint src cypress/integration/",
     "prepublish": "yarn run build",
-    "test:unit": "mocha -require @babel/register  --require choma cypress/integration/**/*spec.js --reporter spec"
+    "test:unit": "cypress run --spec 'cypress/integration/**/*.spec.js'"
   },
   "main": "dist/index.js",
   "dependencies": {
