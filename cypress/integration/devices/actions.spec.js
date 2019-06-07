@@ -1,4 +1,4 @@
-import "@babel/polyfill"
+// import "@babel/polyfill"
 
 import chai, {expect} from 'chai'
 import sinon from 'sinon'

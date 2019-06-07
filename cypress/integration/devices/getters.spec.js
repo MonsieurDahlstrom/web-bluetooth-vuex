@@ -1,5 +1,3 @@
-import "@babel/polyfill"
-
 import Vue from "vue"
 import Vuex from "vuex"
 import WebBluetoothModule from '../../../src'

@@ -1,5 +1,3 @@
-import "@babel/polyfill"
-
 import {expect} from 'chai'
 import Vue from 'vue'
 import Vuex from 'vuex'
