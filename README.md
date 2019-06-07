@@ -13,7 +13,7 @@ $ npm install coinmarketcap-vuex
 //Set up Vue & Vuex
 import Vue from 'vue'
 import Vuex from 'vuex'
-import WebBluetoothModule from 'coinmarketcap-vuex'
+import WebBluetoothModule from 'web-bluetooth-vuex'
 
 Vue.use(Vuex)
 

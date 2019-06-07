@@ -1,20 +1,20 @@
 {
   "name": "web-bluetooth-vuex",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "vuex store module for web bluetooth device interactions and discovery.",
   "author": "Mathias Dahlstrom",
   "private": false,
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "test": "yarn run lint && yarn run test:unit",
+    "build": "rollup -c rollup.config.js",
+    "test": "npm run lint && npm run test:unit",
     "lint": "eslint src cypress/integration/",
-    "prepublish": "yarn run build",
+    "prepublish": "npm run lint && npm run build",
     "test:unit": "cypress run --spec 'cypress/integration/**/*.spec.js'"
   },
   "main": "./dist/cjs.bundle.js",
   "module": "./dist/esm.bundle.js",
   "files": [
-    "./dist/**/*"
+    "/dist"
   ],
   "dependencies": {
     "@babel/runtime": "^7.4.5",
