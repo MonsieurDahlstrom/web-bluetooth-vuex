@@ -12,6 +12,7 @@ Vue.use(Vuex)
 describe("WebBluetoothModule", function() {
 
   describe("default export", function () {
+    it("exports default", function () { expect(WebBluetoothModule).to.not.be.undefined})
     describe("adding module to store", function() {
       it("does not throw", function () {
         expect(() => new Vuex.Store({state: { }, modules: {webBluetooth: WebBluetoothModule}})).to.not.throw()
@@ -21,9 +22,6 @@ describe("WebBluetoothModule", function() {
 })
 
 describe("Vuex Module", () => {
-  it("export VueBluetoothLEMixin", function () {
-    expect(VueBluetoothLEMixin).to.not.be.undefined
-  })
+
   it("exports VuexBluetoothLEModule", function () { expect(VuexBluetoothLEModule).to.not.be.undefined})
-  it("exports default WebBluetoothModule", function () { expect(WebBluetoothModule).to.not.be.undefined})
 });

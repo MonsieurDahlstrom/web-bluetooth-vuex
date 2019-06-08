@@ -1,26 +1,55 @@
-const Cannonical128UUIDBase = '0000XXXX-0000-1000-8000-00805f9b34fb'
-// DFU by Nordic Semiconductor
-const DFU_BASE = '0000xxxx-0000-1000-8000-00805f9b34fb'
-export const DFUSecure = DFU_BASE.replace('xxxx', 'fe59')
-const DFU_CHAR_BASE = '8ec9xxxx-f315-4f60-9fb8-838830daea50'
-// Control Point is notify, write
-export const DFUSecureControlPoint = DFU_CHAR_BASE.replace('xxxx', '0001')
-// Packet is Write No Response
-export const DFUSecurePacket = DFU_CHAR_BASE.replace('xxxx', '0002')
-
 const WebBluetoothStoreUtils = {
+  computed: {
+    /*
+      Device information service and characteristics
+    */
+    deviceInformationServiceUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x180A)
+    },
+    pnpIdUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A50)
+    },
+    regulatoryCertificationDataListUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A2A)
+    },
+    systemIdUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A23)
+    },
+    softwareRevisionUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A28)
+    },
+    firmwareRevisionUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A26)
+    },
+    hardwareRevisionUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A27)
+    },
+    serialNumberUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A25)
+    },
+    modelNumberUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A24)
+    },
+    manufacturerNameUUID: function (device) {
+      return BluetoothUUID.canonicalUUID(0x2A29)
+    },
+    /*
+      Battery service and characteristics
+    */
+    batteryServiceUUID: function () {
+      return BluetoothUUID.canonicalUUID(0x180F)
+    },
+    batteryLevelUUID: function () {
+      return BluetoothUUID.canonicalUUID(0x2A19)
+    },
+    batteryLevelStateUUID: function () {
+      return BluetoothUUID.canonicalUUID(0x2A1B)
+    },
+    batteryPowerStateUUID: function () {
+      return BluetoothUUID.canonicalUUID(0x2A1A)
+    }
+  },
   methods: {
-    disService: function (device) {
-      var DeviceInformationUUID = BluetoothUUID.canonicalUUID(0x180A)
-      return this.$store.getters.webBluetoothServicesForDevice(device).find((service) => service.uuid === DeviceInformationUUID)
-    },
-    dfuService: function (device) {
-      return this.$store.getters.webBluetoothServicesForDevice(device).find((service) => service.uuid === DFUSecure)
-    },
-    valueForCharacteristicUUID: function (service, uuid) {
-      var characteristic = this.$store.getters.webBluetoothCharacteristicsForService(service).find((characteristic) => characteristic.uuid === uuid)
-      return characteristic.value
-    },
     stringForCharacteristicValue: function (dataview) {
       var text = ''
       for (var i = 0, l = dataview.byteLength; i < l; i++) {
