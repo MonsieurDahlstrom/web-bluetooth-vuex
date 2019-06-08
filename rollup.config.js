@@ -7,11 +7,13 @@ export default {
   output: [
       {
         file: 'dist/esm.bundle.js',
-        format: 'esm'
+        format: 'esm',
+        sourcemap: true
       },
       {
         file: 'dist/cjs.bundle.js',
-        format: 'cjs'
+        format: 'cjs',
+        sourcemap: true
       }
   ],
   plugins: [
