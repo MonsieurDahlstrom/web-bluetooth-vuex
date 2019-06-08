@@ -1,6 +1,6 @@
 {
   "name": "web-bluetooth-vuex",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "vuex store module for web bluetooth device interactions and discovery.",
   "author": "Mathias Dahlstrom",
   "private": false,
