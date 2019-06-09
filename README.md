@@ -3,9 +3,9 @@ A vuex module to interface with BLE devices through the Web Bluetooth API availa
 
 ## Installation
 ```console
-$ yarn add coinmarketcap-vuex
+$ yarn add web-bluetooth-vuex
 # OR
-$ npm install coinmarketcap-vuex
+$ npm install web-bluetooth-vuex
 ```
 
 ## Configuration
