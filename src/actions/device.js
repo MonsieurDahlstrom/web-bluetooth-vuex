@@ -13,7 +13,7 @@ const DeviceActions = {
   async addDevice ({ dispatch, commit }, query) {
     var requestParameters = { }
     // Was a device name set for the character
-    if(query.name || query.namePrefix) {
+    if(query.name || query.namePrefix || query.anyDevices) {
       var filters = []
       if (query.name) {
         filters.push({name: query.name})
@@ -21,15 +21,14 @@ const DeviceActions = {
       if (query.namePrefix) {
         filters.push({namePrefix: query.namePrefix})
       }
-      requestParameters.filters = filters
+      if (query.anyDevices) {
+        requestParameters['acceptAllDevices'] = true
+      }
+      if(filters.length > 0)
+        requestParameters.filters = filters
       requestParameters.optionalServices = query.services
-    } else{
-      requestParameters['acceptAllDevices'] = true
-      requestParameters.optionalServices = query.services
-    }
-    // Does the query specify a collection of optional services to look for
-    if (query.optionalServices !== undefined) {
-      requestParameters['optionalServices'] = query.optionalServices
+    } else {
+      requestParameters.filters = [{ services: query.services }]
     }
     // Perform Query
     let device = await navigator.bluetooth.requestDevice(requestParameters)
@@ -53,6 +52,8 @@ const DeviceActions = {
       payload.device.GattDisconnectionCallback = (event) => {
         payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
         payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback)
+        commit(mutationTypes.BLE_DEVICE_DISCONNECTED, payload.device)
+        commit(mutationTypes.BLE_DEVICE_UPDATED, payload.device)
       }
       payload.device.addEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
     }
@@ -64,6 +65,7 @@ const DeviceActions = {
       payload.device.removeEventListener('gattserverdisconnected', payload.device.GattDisconnectionCallback)
       payload.device.removeEventListener('advertisementreceived', payload.device.GattAdvertismentCallback)
       await payload.device.gatt.disconnect()
+      commit(mutationTypes.BLE_DEVICE_DISCONNECTED, payload.device)
     }
     commit(mutationTypes.BLE_DEVICE_UPDATED, payload.device)
   }

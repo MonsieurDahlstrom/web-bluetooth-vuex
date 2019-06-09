@@ -1,53 +1,56 @@
-const WebBluetoothStoreUtils = {
-  computed: {
-    /*
-      Device information service and characteristics
-    */
-    deviceInformationServiceUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x180A)
-    },
-    pnpIdUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A50)
-    },
-    regulatoryCertificationDataListUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A2A)
-    },
-    systemIdUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A23)
-    },
-    softwareRevisionUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A28)
-    },
-    firmwareRevisionUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A26)
-    },
-    hardwareRevisionUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A27)
-    },
-    serialNumberUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A25)
-    },
-    modelNumberUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A24)
-    },
-    manufacturerNameUUID: function (device) {
-      return BluetoothUUID.canonicalUUID(0x2A29)
-    },
-    /*
-      Battery service and characteristics
-    */
-    batteryServiceUUID: function () {
-      return BluetoothUUID.canonicalUUID(0x180F)
-    },
-    batteryLevelUUID: function () {
-      return BluetoothUUID.canonicalUUID(0x2A19)
-    },
-    batteryLevelStateUUID: function () {
-      return BluetoothUUID.canonicalUUID(0x2A1B)
-    },
-    batteryPowerStateUUID: function () {
-      return BluetoothUUID.canonicalUUID(0x2A1A)
-    }
+/*
+  Device information service and characteristics
+*/
+const DeviceInformationService =  {
+  uuid: BluetoothUUID.canonicalUUID(0x180A),
+  PnpId: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A50)
+  },
+  RegulatoryCertificationDataList: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A2A)
+  },
+  SystemId: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A23)
+  },
+  SoftwareRevision: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A28)
+  },
+  FirmwareRevision: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A26)
+  },
+  HardwareRevision: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A27)
+  },
+  SerialNumber: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A25)
+  },
+  ModelNumber: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A24)
+  },
+  ManufacturerName: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A29)
+  }
+}
+
+/*
+  Battery service and characteristics
+*/
+const BatteryService = {
+  uuid: BluetoothUUID.canonicalUUID(0x180F),
+  Level: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A19)
+  },
+  LevelState: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A1B)
+  },
+  PowerState: {
+    uuid: BluetoothUUID.canonicalUUID(0x2A1A)
+  }
+}
+
+const WebBluetoothMixin = {
+  data() {
+    return { deviceInformationService: DeviceInformationService, batteryService: BatteryService }
   },
   methods: {
     stringForCharacteristicValue: function (dataview) {
@@ -60,4 +63,4 @@ const WebBluetoothStoreUtils = {
   }
 }
 
-export default WebBluetoothStoreUtils
+export default WebBluetoothMixin

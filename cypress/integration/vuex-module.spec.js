@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 //
 import factory, {Service} from '../support/factories'
 //
-import WebBluetoothModule, {VueBluetoothLEMixin, VuexBluetoothLEModule} from '../../src'
+import WebBluetoothModule, {WebBluetoothVuexModule} from '../../src'
 
 Vue.use(Vuex)
 
@@ -23,5 +23,5 @@ describe("WebBluetoothModule", function() {
 
 describe("Vuex Module", () => {
 
-  it("exports VuexBluetoothLEModule", function () { expect(VuexBluetoothLEModule).to.not.be.undefined})
+  it("exports VuexBluetoothLEModule", function () { expect(WebBluetoothVuexModule).to.not.be.undefined})
 });

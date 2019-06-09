@@ -7,7 +7,7 @@ import ServiceMutations from './mutations/service'
 import CharacteristicMutations from './mutations/characteristic'
 //
 import Getters from './getters.js'
-import VueBluetoothLEMixin from './web-bluetooth-store-utils.js'
+import WebBluetoothMixin from './web-bluetooth-store-utils.js'
 
 
 
@@ -22,7 +22,7 @@ const Actions = Object.assign({}, DeviceActions, ServiceActions, CharacteristicA
 
 const Mutations = Object.assign({}, DeviceMutatations, ServiceMutations, CharacteristicMutations)
 
-const VuexModule = {
+const WebBluetoothVuexModule = {
   state: WebBluetoothState,
   mutations: Mutations,
   actions: Actions,
@@ -30,5 +30,5 @@ const VuexModule = {
   namespaced: true
 }
 
-export { VueBluetoothLEMixin as VueBluetoothLEMixin, VuexModule as VuexBluetoothLEModule }
-export default VuexModule
+export { WebBluetoothMixin, WebBluetoothVuexModule }
+export default WebBluetoothVuexModule

@@ -26,102 +26,92 @@ describe("Actions device", function () {
   })
 
   describe("#addDevice", function () {
-    it('handles {name: \'ExampleName\'}', function (done) {
-      var mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(undefined);
-      var payload = {name: 'DeviceName'}
-      var doneFunc = function(err) {
-        if (err) {
-          done(err)
-          return
+
+    describe("Request parameters", function(done) {
+
+      beforeEach(function() {
+        this.requestDeviceStub = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(undefined);
+      })
+
+      it('accepts name and services', function(done) {
+        var payload = {name: 'DeviceName', services: ["device_information"] }
+        const expectations = () => {
+          try {
+            expect(this.requestDeviceStub.callCount).to.equal(1)
+            const requestParameters = this.requestDeviceStub.getCalls()[0].args
+            expect(requestParameters[0]).to.deep.include({
+              filters: [
+                {name: 'DeviceName'}
+              ],
+              optionalServices: ['device_information']
+            })
+            done()
+          } catch(error) {
+            done(error)
+          }
         }
-        let expectedCallArguments = mock.getCalls()[0]
-        let receivedArguments = expectedCallArguments.args[0]
-        let error = undefined
-        try {
-          expect(mock.callCount).to.equal(1)
-          expect(receivedArguments.filters).to.not.be.undefined
-          expect(receivedArguments.filters).to.deep.include({name: 'DeviceName'})
-          done()
-        } catch(error) {
-          done(error)
+        var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], expectations)
+        test.run()
+      })
+      it("accepts name prefix and services", function(done){
+        var payload = {namePrefix: 'DeviceNamePrefix', services: ["device_information"] }
+        const expectations = () => {
+          try {
+            expect(this.requestDeviceStub.callCount).to.equal(1)
+            const requestParameters = this.requestDeviceStub.getCalls()[0].args
+            expect(requestParameters[0]).to.deep.equal({
+              filters: [
+                {namePrefix: 'DeviceNamePrefix'}
+              ],
+              optionalServices: ['device_information']
+            })
+            done()
+          } catch(error) {
+            done(error)
+          }
         }
-      }
-      var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], doneFunc)
-      test.run()
+        var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], expectations)
+        test.run()
+      })
+      it("accepts any device and services", function(done){
+        var payload = {anyDevices: true, services: ["device_information"] }
+        const expectations = () => {
+          try {
+            expect(this.requestDeviceStub.callCount).to.equal(1)
+            const requestParameters = this.requestDeviceStub.getCalls()[0].args
+            expect(requestParameters[0]).to.deep.include({
+              acceptAllDevices: true,
+              optionalServices: ['device_information']
+            })
+            done()
+          } catch(error) {
+            done(error)
+          }
+        }
+        var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], expectations)
+        test.run()
+      })
+      it("accepts services", function(done){
+        var payload = { services: ["device_information"] }
+        const expectations = () => {
+          try {
+            expect(this.requestDeviceStub.callCount).to.equal(1)
+            const requestParameters = this.requestDeviceStub.getCalls()[0].args
+            expect(requestParameters[0]).to.deep.include({
+              filters: [
+                { services: ["device_information"] }
+              ]
+            })
+            done()
+          } catch(error) {
+            done(error)
+          }
+        }
+        var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], expectations)
+        test.run()
+      })
     })
-    it('handles {namePrefix: \'Prefix\'}', function (done) {
-      var mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(undefined);
-      var payload = {namePrefix: 'Prefix'}
-      var doneFunc = function(err) {
-        if (err) {
-          done(err)
-          return
-        }
-        let expectedCallArguments = mock.getCalls()[0]
-        let receivedArguments = expectedCallArguments.args[0]
-        let error = undefined
-        try {
-          expect(mock.callCount).to.equal(1)
-          expect(receivedArguments.filters).to.not.be.undefined
-          expect(receivedArguments.filters).to.deep.include({namePrefix: 'Prefix'})
-          done()
-        } catch(error) {
-          done(error)
-        }
-      }
-      var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], doneFunc)
-      test.run()
-    })
-    it('handles {services: [\'heart_rate\',\'c48e6067-5295-48d3-8d5c-0395f61792b1\',0x1802]}', function (done) {
-      var mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(undefined);
-      var payload = {services: ['heart_rate','c48e6067-5295-48d3-8d5c-0395f61792b1',0x1802]}
-      var doneFunc = function(err) {
-        if (err) {
-          done(err)
-          return
-        }
-        let expectedCallArguments = mock.getCalls()[0]
-        let receivedArguments = expectedCallArguments.args[0]
-        let error = undefined
-        try {
-          expect(mock.callCount).to.equal(1)
-          expect(receivedArguments.acceptAllDevices).to.not.be.undefined
-          expect(receivedArguments.optionalServices).to.include('heart_rate')
-          expect(receivedArguments.optionalServices).to.include('c48e6067-5295-48d3-8d5c-0395f61792b1')
-          expect(receivedArguments.optionalServices).to.include(0x1802)
-          done()
-        } catch(error) {
-          done(error)
-        }
-      }
-      var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], doneFunc)
-      test.run()
-    })
-    it('handles {optionalServices: [\'heart_rate\',\'c48e6067-5295-48d3-8d5c-0395f61792b1\',0x1802]}', function (done) {
-      var mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(undefined);
-      var payload = {optionalServices: ['heart_rate','c48e6067-5295-48d3-8d5c-0395f61792b1',0x1802]}
-      var doneFunc = function(err) {
-        if (err) {
-          done(err)
-          return
-        }
-        let expectedCallArguments = mock.getCalls()[0]
-        let receivedArguments = expectedCallArguments.args[0]
-        let error = undefined
-        try {
-          expect(mock.callCount).to.equal(1)
-          expect(receivedArguments.acceptAllDevices).to.not.be.undefined
-          expect(receivedArguments.optionalServices).to.include('heart_rate')
-          expect(receivedArguments.optionalServices).to.include('c48e6067-5295-48d3-8d5c-0395f61792b1')
-          expect(receivedArguments.optionalServices).to.include(0x1802)
-          done()
-        } catch(error) {
-          done(error)
-        }
-      }
-      var test = new VuexActionTester(DeviceActions.addDevice, payload, [],[], doneFunc)
-      test.run()
-    })
+
     it('adds device', function (done) {
       let mock = this.sandbox.stub(navigator.bluetooth, "requestDevice").returns(this.device);
       let payload = {}
@@ -181,6 +171,14 @@ describe("Actions device", function () {
     it('connects device', function (done) {
       let spy = this.sandbox.spy(this.device.gatt, 'connect')
       let payload = {device: this.device}
+      let expectations = () => {
+        try {
+          expect(this.device.GattDisconnectionCallback).to.not.be.undefined
+          done()
+        } catch (e) {
+          done(e)
+        }
+      }
       let mutations = [
         {
           type: MutationTypes.BLE_DEVICE_UPDATED,
@@ -190,7 +188,7 @@ describe("Actions device", function () {
           }.bind(this)
         }
       ]
-      var test = new VuexActionTester(DeviceActions.connectDevice, payload, mutations,[],done)
+      var test = new VuexActionTester(DeviceActions.connectDevice, payload, mutations,[],expectations)
       test.run()
     })
     it('checks connected state', function (done) {
@@ -238,6 +236,12 @@ describe("Actions device", function () {
     it('disconnects device', function (done) {
       let spy = this.sandbox.spy(this.device.gatt, 'disconnect')
       let mutations = [
+        {
+          type: MutationTypes.BLE_DEVICE_DISCONNECTED,
+          validation: function (payload) {
+            expect(this.device).to.deep.equal(this.device)
+          }.bind(this)
+        },
         {
           type: MutationTypes.BLE_DEVICE_UPDATED,
           validation: function (payload) {

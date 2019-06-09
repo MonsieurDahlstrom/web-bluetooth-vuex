@@ -84,6 +84,36 @@ describe("Mutations device", function() {
     })
   })
 
+  describe('#BLE_DEVICE_DISCONNECTED', function() {
+    it('removes associated services', async function() {
+      this.state.devices.push(this.device)
+      const services = await this.device.gatt.getPrimaryServices()
+      for(const service of services) {
+        service.device = this.device
+        this.state.services.push(service)
+      }
+      //
+      expect(this.state.services.length).to.equal(2)
+      DeviceMutations[MutationTypes.BLE_DEVICE_DISCONNECTED](this.state,this.device)
+      expect(this.state.services.length).to.equal(0)
+    })
+    it('removes associated characteristic', async function() {
+      this.state.devices.push(this.device)
+      const services = await this.device.gatt.getPrimaryServices()
+      for(const service of services) {
+        service.device = this.device
+        let characteristic = await factory.create('characteristic')
+        characteristic.service = service
+        service.characteristics.set(characteristic.uuid, characteristic)
+        this.state.services.push(service)
+        this.state.characteristics.push(characteristic)
+      }
+      //
+      expect(this.state.characteristics.length).to.equal(2)
+      DeviceMutations[MutationTypes.BLE_DEVICE_DISCONNECTED](this.state,this.device)
+      expect(this.state.characteristics.length).to.equal(0)
+    })
+  })
   /*
   describe("#BLE_DEVICE_ADVERTISMENT_UPDATED")
 
